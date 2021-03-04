@@ -1,0 +1,47 @@
+/* 复合选择器：
+      权重问题：
+        复合选择器权重就是每个基本选择器的权重叠加值，但不进位
+ */
+
+
+/* 子代选择器 */
+
+ol>li {
+  list-style: none;
+  color: red;
+}
+/* 后代选择器 */
+table td {
+  background-color: #cdc;
+}
+
+/* 并集选择器 */
+table,
+ol {
+  width: 100px;
+  height: 100px;
+  background-color: #ccf;
+}
+
+/* 交集选择器 */
+table.table {
+  border: 1px solid blue;
+}
+
+/* 伪类选择器 */
+ol>li:hover,
+table td:hover {
+  background-color: skyblue;
+}
+
+/* 链接伪类，书写顺序：LVHA
+    a:link{}      还未访问
+    a:visited{}   已访问过
+    a:hover{}     鼠标悬停
+    a:active{}    鼠标按下未弹起
+ */
+
+/* focus伪类选择器：
+    用于选取获得焦点的表单元素。
+    input.focus{}
+ */

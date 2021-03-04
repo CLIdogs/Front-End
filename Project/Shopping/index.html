@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- 页面标题 -->
+  <title>品优购首页-综合网购首选-正品低价、品质保障、配送及时、轻松购物</title>
+  <!-- 网站说明 -->
+  <meta name="description" content="品优购商城-专业的综合网上购物商城、销售家电、数码通讯、电脑、家居百货、服装服饰、母婴、图书、食品等数万品牌优质商品，便捷、诚信的服务，为您提供愉悦的网上购物体验">
+  <!-- 关键字 -->
+  <meta name="keywords" content="网上购物，网上商城，手机，笔记本，电脑，MP3，CD，VCD，DV，相机，数码，配件，手表，存储卡，品优购">
+  <!-- 引入初始化样式文件 -->
+  <link rel="stylesheet" href="./css/base.css">
+  <!-- 引入公共模块样式文件 -->
+  <link rel="stylesheet" href="./css/common.css">
+  <!-- 引入主页专有模块样式文件 -->
+  <link rel="stylesheet" href="./css/index.css">
+  <!-- 引入网站图标 favicon.ico -->
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+
+</head>
+
+<body>
+  <!-- 1，顶部的快捷导航栏模块：浮动 -->
+  <section class="shortcut">
+    <!-- 设置版心 -->
+    <div class="w">
+      <!-- 左侧浮动盒子 -->
+      <div class="fl">
+        <ul>
+          <li>品优购欢迎您!&nbsp;</li>
+          <li><a href="#">请登录</a>&nbsp;<a href="./register.html" class="style_red">免费注册</a></li>
+        </ul>
+      </div>
+      <!-- 右侧浮动盒子 -->
+      <div class="fr">
+        <ul>
+          <li>我的订单</li>
+          <li></li>
+          <li class="arrow-icon">我的品优购</li>
+          <li></li>
+          <li>品优购会员</li>
+          <li></li>
+          <li>企业采购</li>
+          <li></li>
+          <li class="arrow-icon">关注品优购</li>
+          <li></li>
+          <li class="arrow-icon">客户服务</li>
+          <li></li>
+          <li class="arrow-icon">网站导航</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <!-- 2，header头部模块：定位 -->
+  <header class="header w">
+    <!-- 网站LOGO优化：
+            放在h1中（让浏览器发现，为了提权）
+            作为回到主页的链接，设置链接的title作为提示
+            链接中放文字（网站名称），并隐藏文字，方法：
+              1，text-indent + overflow
+              2，font-size: 0
+            背景图片形式显示
+          -->
+    <!-- LOGO模块：绝对定位 -->
+    <div class="logo">
+      <h1><a href="index.html" title="品优购商城">品优购商城</a></h1>
+    </div>
+    <!-- 搜索模块：绝对定位 -->
+    <div class="search">
+      <input type="search" placeholder="iphone12">
+      <button>搜索</button>
+    </div>
+    <!-- 搜索热词模块：绝对定位 -->
+    <div class="hotwords style_red">
+      <a href="#">优惠购首发</a>
+      <a href="#">亿元优惠</a>
+      <a href="#">9.9元团购</a>
+      <a href="#">美满99减30</a>
+      <a href="#">办公用品</a>
+      <a href="#">电脑</a>
+      <a href="#">通信</a>
+    </div>
+    <!-- 购物车模块 -->
+    <div class="shopcar">我的购物车
+      <i class="count">8</i>
+    </div>
+
+  </header>
+  <!-- 3，nav导航模块：浮动 -->
+  <nav class="nav">
+    <div class="w">
+      <div class="dropdown fl">
+        <!-- 左侧商品分类 -->
+        <div class="dt">全部商品分类</div>
+        <div class="dd">
+          <ul>
+            <li><a href="">家用电器</a></li>
+            <li><a href="./list.html">手机</a>、<a href="#">数码</a>、<a href="#">通讯</a></li>
+            <li><a href="./list.html">手机</a>、<a href="#">数码</a>、<a href="#">通讯</a></li>
+            <li><a href="./list.html">手机</a>、<a href="#">数码</a>、<a href="#">通讯</a></li>
+            <li><a href="./list.html">手机</a>、<a href="#">数码</a>、<a href="#">通讯</a></li>
+          </ul>
+        </div>
+      </div>
+      <!-- 右侧导航单元 -->
+      <div class="navitems fl">
+        <ul>
+          <li><a href="#">服装城</a></li>
+          <li><a href="#">服装城</a></li>
+          <li><a href="#">服装城</a></li>
+          <li><a href="#">服装城</a></li>
+          <li><a href="#">服装城</a></li>
+          <li><a href="#">服装城</a></li>
+          <li><a href="#">服装城</a></li>
+          <li><a href="#">服装城</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- 5，主页专有模块 -->
+  <div class="w">
+    <!-- 5.1，主体模块 -->
+    <main class="main">
+      <!-- 焦点图 -->
+      <div class="focus fl">
+        <ul class="pic">
+          <li><a href="#"><img src="./images/pic_focus.png" alt="图1"></a></li>
+          <li><a href="#"><img src="./images/iphone_se2.jpg" alt="图2"></a></li>
+          <li><a href="#"><img src="./images/pic_focus.png" alt="图3"></a></li>
+        </ul>
+        <ul class="pic_nav">
+          <li class="first"></li>
+          <li class="second"></li>
+          <li class="third"></li>
+          <li class="fourth"></li>
+        </ul>
+      </div>
+      <!-- 新闻快报 -->
+      <div class="newsflash fr">
+        <div class="news">
+          <div class="new_hd">
+            <h5>品优购快报</h5>
+            <a href="#" class="more">更多</a>
+          </div>
+          <div class="new_bd">
+            <ul>
+              <li><a href="#"><strong>[特惠]</strong> 备战开学 全民半价购数码</a></li>
+              <li><a href="#"><strong>[特惠]</strong> 喜庆元宵 活动好礼拿到手软</a></li>
+              <li><a href="#"><strong>[特惠]</strong> 备战开学 全民半价购数码</a></li>
+              <li><a href="#"><strong>[特惠]</strong> 备战开学 全民半价购数码</a></li>
+              <li><a href="#"><strong>[特惠]</strong> 备战开学 全民半价购数码</a></li>
+            </ul>
+          </div>
+        </div>
+        <!-- 生活服务 -->
+        <div class="lifeservice">
+          <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+            <li>8</li>
+            <li>9</li>
+            <li>10</li>
+            <li>11</li>
+            <li>12</li>
+          </ul>
+        </div>
+        <!-- 广告 -->
+        <div class="bargain">
+          广告位
+        </div>
+
+      </div>
+    </main>
+  </div>
+  <!-- 5.2，推荐模块 -->
+  <div class="recom w">
+    <div class="recom_hd fl"> 今日推荐</div>
+    <!-- 插入部分 -->
+    <!-- 含进度条的商品模块 -->
+    <article class="recombd">
+      <div class="goods">
+        <img src="./images/iphone_se2.jpg" alt="商品图片">
+        <p>Apple苹果iPhone 6s Plus(A1699) 32G 金色移动联通电信4G手机</p>
+        <div class="goods_price">
+          <i class="curr_price">￥6088</i>
+          ￥6988
+        </div>
+        <div class="goods_bar">
+          <div class="sale">已售<span>87%</span></div>
+          <i class="progress_bar">
+            <div class="run"></div>
+          </i>
+          <div class="remain">剩余<span>29</span>件</div>
+        </div>
+        <a href="#">立即抢购</a>
+      </div>
+      <div class="goods">
+        <img src="./images/iphone_se2.jpg" alt="商品图片">
+        <p>Apple苹果iPhone 6s Plus(A1699) 32G 金色移动联通电信4G手机</p>
+        <div class="goods_price">
+          <i class="curr_price">￥6088</i>
+          ￥6988
+        </div>
+        <div class="goods_bar">
+          <div class="sale">已售<span>87%</span></div>
+          <i class="progress_bar">
+            <div class="run"></div>
+          </i>
+          <div class="remain">剩余<span>29</span>件</div>
+        </div>
+        <a href="#">立即抢购</a>
+      </div>
+      <div class="goods">
+        <img src="./images/iphone_se2.jpg" alt="商品图片">
+        <p>Apple苹果iPhone 6s Plus(A1699) 32G 金色移动联通电信4G手机</p>
+        <div class="goods_price">
+          <i class="curr_price">￥6088</i>
+          ￥6988
+        </div>
+        <div class="goods_bar">
+          <div class="sale">已售<span>87%</span></div>
+          <i class="progress_bar">
+            <div class="run"></div>
+          </i>
+          <div class="remain">剩余<span>29</span>件</div>
+        </div>
+        <a href="#">立即抢购</a>
+      </div>
+      <div class="goods">
+        <img src="./images/iphone_se2.jpg" alt="商品图片">
+        <p>Apple苹果iPhone 6s Plus(A1699) 32G 金色移动联通电信4G手机</p>
+        <div class="goods_price">
+          <i class="curr_price">￥6088</i>
+          ￥6988
+        </div>
+        <div class="goods_bar">
+          <div class="sale">已售<span>87%</span></div>
+          <i class="progress_bar">
+            <div class="run"></div>
+          </i>
+          <div class="remain">剩余<span>29</span>件</div>
+        </div>
+        <a href="#">立即抢购</a>
+      </div>
+      <div class="goods">
+        <img src="./images/iphone_se2.jpg" alt="商品图片">
+        <p>Apple苹果iPhone 6s Plus(A1699) 32G 金色移动联通电信4G手机</p>
+        <div class="goods_price">
+          <i class="curr_price">￥6088</i>
+          ￥6988
+        </div>
+        <div class="goods_bar">
+          <div class="sale">已售<span>87%</span></div>
+          <i class="progress_bar">
+            <div class="run"></div>
+          </i>
+          <div class="remain">剩余<span>29</span>件</div>
+        </div>
+        <a href="#">立即抢购</a>
+      </div>
+      <div class="goods">
+        <img src="./images/iphone_se2.jpg" alt="商品图片">
+        <p>Apple苹果iPhone 6s Plus(A1699) 32G 金色移动联通电信4G手机</p>
+        <div class="goods_price">
+          <i class="curr_price">￥6088</i>
+          ￥6988
+        </div>
+        <div class="goods_bar">
+          <div class="sale">已售<span>87%</span></div>
+          <i class="progress_bar">
+            <div class="run"></div>
+          </i>
+          <div class="remain">剩余<span>29</span>件</div>
+        </div>
+        <a href="#">立即抢购</a>
+      </div>
+      <div class="goods">
+        <img src="./images/iphone_se2.jpg" alt="商品图片">
+        <p>Apple苹果iPhone 6s Plus(A1699) 32G 金色移动联通电信4G手机</p>
+        <div class="goods_price">
+          <i class="curr_price">￥6088</i>
+          ￥6988
+        </div>
+        <div class="goods_bar">
+          <div class="sale">已售<span>87%</span></div>
+          <i class="progress_bar">
+            <div class="run"></div>
+          </i>
+          <div class="remain">剩余<span>29</span>件</div>
+        </div>
+        <a href="#">立即抢购</a>
+      </div>
+      <div class="goods">
+        <img src="./images/iphone_se2.jpg" alt="商品图片">
+        <p>Apple苹果iPhone 6s Plus(A1699) 32G 金色移动联通电信4G手机</p>
+        <div class="goods_price">
+          <i class="curr_price">￥6088</i>
+          ￥6988
+        </div>
+        <div class="goods_bar">
+          <div class="sale">已售<span>87%</span></div>
+          <i class="progress_bar">
+            <div class="run"></div>
+          </i>
+          <div class="remain">剩余<span>29</span>件</div>
+        </div>
+        <a href="#">立即抢购</a>
+      </div>
+      <div class="goods">
+        <img src="./images/iphone_se2.jpg" alt="商品图片">
+        <p>Apple苹果iPhone 6s Plus(A1699) 32G 金色移动联通电信4G手机</p>
+        <div class="goods_price">
+          <i class="curr_price">￥6088</i>
+          ￥6988
+        </div>
+        <div class="goods_bar">
+          <div class="sale">已售<span>87%</span></div>
+          <i class="progress_bar">
+            <div class="run"></div>
+          </i>
+          <div class="remain">剩余<span>29</span>件</div>
+        </div>
+        <a href="#">立即抢购</a>
+      </div>
+    </article>
+  </div>
+  <div style="clear: both;"></div>
+
+  <!-- 6，楼层导航模块 -->
+  <div class="floor ">
+    <!-- 家电区域 -->
+    <div class="w appliance">
+      <!-- 区域导航栏 -->
+      <div class="box_hd">
+        <h3>家用电器</h3>
+        <div class="tab_list">
+          <ul>
+            <li><a href="#" class="style_red">热门</a>|</li>
+            <li><a href="#">生活电器</a>|</li>
+            <li><a href="#">厨房电器</a>|</li>
+            <li><a href="#">个护健康</a>|</li>
+            <li><a href="#">应季电器</a>|</li>
+            <li><a href="#">空气/净水</a>|</li>
+            <li><a href="#">新奇特</a>|</li>
+            <li><a href="#">高端电器</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="box_bd">
+        <div class="tab_content">
+          <div class="tab_list_item">
+            <div class="col_210">
+              <ul>
+                <li><a href="#">节能补贴</a></li>
+                <li><a href="#">节能补贴</a></li>
+                <li><a href="#">节能补贴</a></li>
+                <li><a href="#">节能补贴</a></li>
+                <li><a href="#">节能补贴</a></li>
+                <li><a href="#">节能补贴</a></li>
+              </ul>
+              <a href="#"><img src="./images/iphone_se2.jpg" alt="iphone12" title="iphone12"></a>
+            </div>
+            <div class="col_329">
+              <a href="#"><img src="#" alt="商品图片"></a>
+            </div>
+            <div class="col_221">
+              <a href="#"><img src="#" alt="商品图片"></a>
+            </div>
+            <div class="col_221">
+              <a href="#"><img src="#" alt="商品图片"></a>
+            </div>
+            <div class="col_219">
+              <a href="#"><img src="#" alt="商品图片"></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 手机区域 -->
+    <div class="w appliance">
+      <!-- 区域导航栏 -->
+      <div class="box_hd">
+        <h3>手机通讯</h3>
+        <div class="tab_list">
+          <ul>
+            <li><a href="#" class="style_red">热门</a>|</li>
+            <li><a href="#">生活电器</a>|</li>
+            <li><a href="#">厨房电器</a>|</li>
+            <li><a href="#">个护健康</a>|</li>
+            <li><a href="#">应季电器</a>|</li>
+            <li><a href="#">空气/净水</a>|</li>
+            <li><a href="#">新奇特</a>|</li>
+            <li><a href="#">高端电器</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="box_bd">
+        <div class="tab_content">
+          <div class="tab_list_item">
+            <div class="col_210">
+              <ul>
+                <li><a href="#">节能补贴</a></li>
+                <li><a href="#">节能补贴</a></li>
+                <li><a href="#">节能补贴</a></li>
+                <li><a href="#">节能补贴</a></li>
+                <li><a href="#">节能补贴</a></li>
+                <li><a href="#">节能补贴</a></li>
+              </ul>
+              <a href="#"><img src="./images/iphone_se2.jpg" alt="iphone12" title="iphone12"></a>
+            </div>
+            <div class="col_329">
+              <a href="#"><img src="#" alt="商品图片"></a>
+            </div>
+            <div class="col_221">
+              <a href="#"><img src="#" alt="商品图片"></a>
+            </div>
+            <div class="col_221">
+              <a href="#"><img src="#" alt="商品图片"></a>
+            </div>
+            <div class="col_219">
+              <a href="#"><img src="#" alt="商品图片"></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- 4，底部通栏 -->
+  <footer class="footer">
+    <!-- 设置版心 -->
+    <div class="w">
+      <!-- 服务模块 -->
+      <div class="mod_service">
+        <ul>
+          <li>
+            <h5 class="one"></h5>
+            <div class="service_txt">
+              <h4>正品保障</h4>
+              <p>正品保障，提供发票</p>
+            </div>
+          </li>
+          <li>
+            <h5 class="two"></h5>
+            <div class="service_txt">
+              <h4>正品保障</h4>
+              <p>正品保障，提供发票</p>
+            </div>
+          </li>
+          <li>
+            <h5 class="three"></h5>
+            <div class="service_txt">
+              <h4>正品保障</h4>
+              <p>正品保障，提供发票</p>
+            </div>
+          </li>
+          <li>
+            <h5 class="four"></h5>
+            <div class="service_txt">
+              <h4>正品保障</h4>
+              <p>正品保障，提供发票</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <!-- 帮助模块 -->
+      <div class="mod_help">
+        <dl>
+          <dt><a href="#">服务指南</a></dt>
+          <dd><a href="#">购物流程</a></dd>
+          <dd><a href="#">会员介绍</a></dd>
+          <dd><a href="#">生活旅行/团购</a></dd>
+          <dd><a href="#">常见问题</a></dd>
+          <dd><a href="#">大家电</a></dd>
+          <dd><a href="#">联系客服</a></dd>
+        </dl>
+        <dl>
+          <dt><a href="#">服务指南</a></dt>
+          <dd><a href="#">购物流程</a></dd>
+          <dd><a href="#">会员介绍</a></dd>
+          <dd><a href="#">生活旅行/团购</a></dd>
+          <dd><a href="#">常见问题</a></dd>
+          <dd><a href="#">大家电</a></dd>
+          <dd><a href="#">联系客服</a></dd>
+        </dl>
+        <dl>
+          <dt><a href="#">服务指南</a></dt>
+          <dd><a href="#">购物流程</a></dd>
+          <dd><a href="#">会员介绍</a></dd>
+          <dd><a href="#">生活旅行/团购</a></dd>
+          <dd><a href="#">常见问题</a></dd>
+          <dd><a href="#">大家电</a></dd>
+          <dd><a href="#">联系客服</a></dd>
+        </dl>
+        <dl>
+          <dt><a href="#">服务指南</a></dt>
+          <dd><a href="#">购物流程</a></dd>
+          <dd><a href="#">会员介绍</a></dd>
+          <dd><a href="#">生活旅行/团购</a></dd>
+          <dd><a href="#">常见问题</a></dd>
+          <dd><a href="#">大家电</a></dd>
+          <dd><a href="#">联系客服</a></dd>
+        </dl>
+        <dl>
+          <dt><a href="#">服务指南</a></dt>
+          <dd><a href="#">购物流程</a></dd>
+          <dd><a href="#">会员介绍</a></dd>
+          <dd><a href="#">生活旅行/团购</a></dd>
+          <dd><a href="#">常见问题</a></dd>
+          <dd><a href="#">大家电</a></dd>
+          <dd><a href="#">联系客服</a></dd>
+        </dl>
+        <dl>
+          <dt>帮助中心</dt>
+          <dd>
+            <img src="images/logo.jpg" alt="微信二维码">
+            品优购客户端
+          </dd>
+        </dl>
+      </div>
+      <!-- 版权模块 -->
+      <div class="mod_copyright">
+        <div class="links">
+          <a href="#">关于我们</a> |
+          <a href="#">联系我们</a> |
+          <a href="#">商家入驻</a> |
+          <a href="#">营销中心</a> |
+          <a href="#">手机品优购</a> |
+          <a href="#">友情链接</a> |
+          <a href="#">销售联盟</a> |
+          <a href="#">品优购社区</a> |
+          <a href="#">品优购公益</a> |
+          <a href="#">English Site</a> |
+          <a href="#">EContact U</a>
+        </div>
+        <div class="copyright">
+          地址：江西省南昌市青山湖区蛟桥镇广兰大道408号
+          邮编：34xxxx
+          电话：xxx-xxx-xxxx
+          传真：xxx-********
+          邮箱：2625xxxx46@qq.com <br />
+          赣ICP12345678备号赣公网安备123456789
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+</html>

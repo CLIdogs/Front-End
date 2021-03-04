@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>实现消除文本框轮廓、文本域防拖拽</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+
+    input,
+    textarea {
+      /* 消除轮廓 */
+      outline: none;
+    }
+
+    textarea {
+      /* 文本域防拖拽 */
+      resize: none;
+    }
+  </style>
+</head>
+
+<body>
+  <input type="text">
+  <textarea cols="30" rows="5"></textarea>
+</body>
+
+</html>

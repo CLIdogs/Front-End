@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>小案例</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .box {
+      width: 160px;
+      padding: 5px;
+      border: 1px solid #333;
+      margin: 100px auto;
+    }
+
+    .box>div {
+      padding: 15px;
+    }
+    
+  </style>
+</head>
+
+<body>
+  <!-- 全选按钮案例 -->
+  <div class="box">
+    <div class="all">
+      全选：<input type="checkbox" id='all'></input>
+    </div>
+    <hr>
+    <div class="items">
+      选项一：<input type="checkbox"><br>
+      选项二：<input type="checkbox"><br>
+      选项三：<input type="checkbox"><br>
+    </div>
+  </div>
+
+  <!-- 全选按钮业务逻辑：
+          全选按钮选中，则选项按钮都要选中
+          全选按钮不选中，则选项按钮都不选中
+
+          选项按钮都选中，则全选按钮也要选中
+          有选项按钮未选中，则全选按钮未选中
+  -->
+  <script>
+    var allbtn = document.querySelector('.all>input')  // 选中全选按钮
+    var itembtn = document.querySelectorAll('.items>input') //获取全部选项按钮
+
+    // 通过全选按钮选定选项按钮
+    all.onclick = function () {
+      var state = allbtn.checked
+      // for (var i = 0; i < itembtn.length; i++)
+      //   itembtn[i].checked = state
+
+      // 使用querySelectorAll()自己的forEach方法（非数组的常用方法）
+      itembtn.forEach(function (item) {
+        item.checked = state
+      })
+    }
+    // 通过选项按钮选定全选按钮
+    itembtn.forEach(function (item) {
+      item.onclick = function () {
+        var flag = true
+        for (var i = 0; i < itembtn.length; i++) {
+          if (itembtn[i].checked === false) {
+            flag = false;
+            break;
+          }
+        }
+        allbtn.checked = flag
+      }
+    })
+  </script>
+
+</body>
+
+</html>

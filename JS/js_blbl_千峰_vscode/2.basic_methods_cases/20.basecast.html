@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数值的进制转换方法和小数保留问题</title>
+</head>
+
+<body>
+    <!-- JS支持进制转换的范围为：2 ~ 36（数字+字母）
+            十进制转为其他进制数：
+                数值变量.toString(进制)     返回表示目标进制值的字符串
+                注意：要使用转换后的字符串型的结果进行数学运算，必须再转回数值（不可直接 -0 转数值）
+            
+            其他类型转为十进制数：
+                parseInt(数字,当前数字的进制)   返回数值型的十进制数
+     -->
+
+    <!-- 保留小数：
+            数值变量.toFixed(保留位数)      位数不够0补齐，返回字符串型的结果
+                注意：同样，要使用结果进行数学运算，也必须转为数值型（-0 即可）
+    -->
+    <script>
+        // 十进制转为其他进制数
+        var num = 100.12345
+        var bin_num = num.toString(8)
+        // 其他进制数转为十进制
+        var res = parseInt(num, 2)
+
+        console.log(typeof (bin_num), bin_num)
+        console.log(typeof (res), res)
+
+        // 保留小数问题
+        res = num.toFixed(3)
+        console.log(typeof (res), res, typeof (res - 0), res - 0)
+
+
+    </script>
+</body>
+
+</html>

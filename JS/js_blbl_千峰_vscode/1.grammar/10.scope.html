@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js的作用域</title>
+</head>
+
+<body>
+    <!-- 作用域：
+        变量生效的范围（普通变量、函数变量）
+
+        两种作用域：
+            全局：
+                一个页面，变量在window中
+            局部：
+                只有函数能生成局部作用域、每一个函数就是一个局部作用域
+
+
+        全局变量和私有变量的预解析：
+            全局预解析：
+                只解析全局变量，页面打开时就完成了
+            私有变量的预解析：
+                函数执行时才进行预解析
+
+
+        作用域的上下级关系：
+            函数写在哪个作用域下，就是哪个作用域的子集作用域（如在函数内定义函数）
+            上级中的变量可以作用在下级作用域
+
+        变量使用机制：
+            先在私有作用域中找是否有该变量，没有则在上一级中找，类推... window中都没有则报错
+            给变量赋值则不同：若全局中都没有找到，则会把该变量声明为全局变量（不需var声明变量）
+            
+     -->
+    <script>
+        // 变量赋值举例
+        function fn() {
+            num = 100       // 这里num会定义为全局变量（若var num = 100，则num为私有变量，作用域为fn()函数）
+            console.log(num)
+        }
+        fn()
+        console.log(num + 1) // 因为num为全局变量，所以不报错
+
+        // 作用域和预解析案例
+
+        // （一）
+        var a = b = 20
+        a = 10
+        b = 10
+        console.log(a, b)    // 10 10 分析：执行顺序为 b=20 a=b a=10 b=10
+
+        // （二）
+        // var c = d
+        // c = 10
+        // d = 10
+        // console.log(c,d)    // 报错：b未定义，分析：执行顺序为 a=b，没有定义
+
+        // （三）
+        fn1()
+        var fn1 = 100
+        function fn1() {
+            fn1 = 200
+            console.log(fn1)    // 200
+        }
+        console.log(fn1)        // 100
+        /* 分析：
+            预解析：
+                全局变量 var fn1、函数变量 function fn1
+            执行：
+                调用fn1()：全局变量 fn1=200，并打印
+                全局变量 fn1=100
+                打印全局变量
+        */
+
+        // （四）
+        // fn2()
+        // fn2()   // 报错：fn2不是一个函数，分析：在fn2中已经把fn2赋值为200，不再表示函数地址
+        // var fn2 = 100
+        // function fn2() {
+        //     fn2 = 200
+        //     console.log(fn2)
+        // }
+        // console.log(fn2)
+
+        // （五）
+        function fn3() {
+            var num = 100
+
+            function fun() {
+                var num = num
+                console.log(num) // undefined 分析：预解析num为当前私有作用域，赋值后仍为undefined
+            }
+
+            fun()
+        }
+        fn3()
+
+        // 函数形参和私有变量重名时，预解析和形参赋值的顺序
+        function fn4(num) {
+            function num() {
+                console.log("num 函数") // 可见，先形参赋值，再预解析
+            }
+            num()
+        }
+        fn4(200)
+        
+    </script>
+</body>
+
+</html>

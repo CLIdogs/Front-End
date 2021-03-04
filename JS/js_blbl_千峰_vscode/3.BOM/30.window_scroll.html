@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>有关滚动条的操作</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    div {
+      width: 2000px;
+      height: 2000px;
+      background-color: #ccc;
+    }
+
+    #box1 {
+      width: 50px;
+      height: 50px;
+      background-color: pink;
+      position: fixed;
+      bottom: 50px;
+      right: 50px;
+    }
+
+    #box2 {
+      width: 50px;
+      height: 50px;
+      background-color: skyblue;
+      position: fixed;
+      top: 50px;
+      right: 50px;
+
+    }
+  </style>
+</head>
+
+<body>
+  <div>
+    <div id='box1'></div>
+    <div id="box2"></div>
+  </div>
+  <!--获取上面隐藏的高度：
+          有两种方法（用于不同情形）：
+            window.document.documentElement.scrollTop    必须有DOCTYPE标签
+            window.document.body.scrollTop               必须不能有DOCTYPE标签
+          兼容写法：
+            var scrollTop = document.documentElement.scrollTop || document.body.scrollTop
+
+      获取左端隐藏的宽度：
+          两种方法：
+            document.documentElement.scrollLeft   必须要有DOCTYPE标签
+            document.body.scrollLeft              必须不能有
+          兼容写法：
+            var scrollLeft = document.documentElement.scrollLeft || document.body.scrollLeft
+
+  -->
+  <script>
+    window.onscroll = function () {
+      var scrollTop = window.document.documentElement.scrollTop || document.body.scrollTop;
+      var scrollLeft = window.document.documentElement.scrollLeft || document.body.scrollLeft;
+      console.log(scrollTop, scrollLeft);
+    }
+  </script>
+  <!-- 滚动条移动到指定位置
+        两种方法：
+          window.scrollTo(x,y)    设置横向滚动条到x位置，纵向滚动条到y位置，不需要单位，如果传递一个参数则报错
+          window.scrollTo({ top:x, left:y })  top left不必写全，可以通过键behavior来控制smooth平滑(不能决定滚动时间)或瞬时instant
+  -->
+  <script>
+    // 点击后定位到指定页面位置
+    box1.onclick = function () {
+      // window.scrollTo(300,500)
+      window.scrollTo({
+        top: 300,
+        behavior: "smooth"
+      })
+    }
+  </script>
+
+  <!-- 通过设置scrollTop和scrollLeft来手动实现跳转
+
+  -->
+  <script>
+    var timer = 0;
+    box2.onclick = function () {
+      // 设置定时器
+      timer = setInterval(function () {
+        document.documentElement.scrollTop -= 100;
+        // 到达顶部就停止定时器
+        if (document.documentElement.scrollTop <= 0) {
+          clearInterval(timer)
+        }
+      }, 50)
+      
+
+      // 滚动过程中，需要停止滚动
+      var scrollTop = document.documentElement.scrollTop;
+      window.onscroll = function () {
+        // 反向滚动时，停止定时器
+        if (document.documentElement.scrollTop >= scrollTop) {
+          clearInterval(timer);
+        }
+        scrollTop = document.documentElement.scrollTop
+
+      }
+    }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,26 @@
+/* text属性相关：颜色 对齐 装饰 缩进 行高等 */
+div {
+  width           : 100px;
+  height          : 100px;
+  background-color: #ccc;
+
+  /* 文本颜色：预定义值、rgb值、十六进制值 */
+  color   : red;
+  /* color: rgb(255,0,0) */
+  /* color: #f00 */
+
+  /* 文本对齐方式：center ... */
+  text-align: center;
+
+  /* 文本装饰：underline overline line-through dotted dashed double... 默认none  */
+  text-decoration: underline;
+
+  /* 文本首行缩进 */
+  text-indent: 2em;
+
+  /* 行高 = 上间距 + 文本高 + 下间距 */
+  line-height: 25px;
+
+  /* 文字阴影：h-shadow v-shadow blur color */
+  text-shadow: 5px 5px 6px rgba(0, 0, 0, 0.7);
+}

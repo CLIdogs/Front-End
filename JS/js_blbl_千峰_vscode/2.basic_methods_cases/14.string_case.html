@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>几个字符串案例的实现</title>
+</head>
+
+<body>
+    <script>
+        // 反转字符串
+
+        // 方法一：
+        function method1(str) {
+            return str.split('').reverse().join('')     // 先转为数组，再反转，再转为字符串
+        }
+        console.log(method1("hello JS"))
+
+        // 方法二：
+        function method2(str) {
+            var res = ''
+            for (var i = str.length - 1; i >= 0; i--) {
+                res += str[i]
+            }
+            return res
+        }
+        console.log(method2("hello JS"))
+
+        // 和谐敏感信息: 如MM、mm
+
+        // 方法一：
+        function hide1(str) {
+            while (str.indexOf('MM') !== -1) {
+                str = str.replace("MM", "**")
+            }
+            return str
+        }
+        console.log(hide1("MMsdaMMzf"))
+
+        // 方法二：
+        function hide2(str) {
+            return str.split('MM').join('**')
+        }
+        console.log(hide2("MMsdaMMzf"))
+
+        // 字符串计数：统计每个字符出现的次数
+        // 思路：利用对象中键值对不可重复的特性
+        function countChar1(str) {
+            var obj = {}
+            for (var i = 0; i < str.length; i++) {
+                if (!obj[str[i]])
+                    obj[str[i]] = 0
+            }
+            for (var i = 0; i < str.length; i++) {
+                obj[str[i]]++
+            }
+            return obj
+        }
+        console.log(countChar1("MMsdaMMzaf"))
+
+        // 在上面的基础上，输出数量最多的字符：
+        function countChar2(str) {
+            var obj = {}
+            var res = ''
+            for (var i = 0; i < str.length; i++) {
+                if (!obj[str[i]])
+                    obj[str[i]] = 0
+            }
+            for (var i = 0; i < str.length; i++) {
+                obj[str[i]]++
+            }
+            var maxNum = 0
+            for (var key in obj) {
+                if (obj[key] > maxNum) {
+                    maxNum = obj[key]
+                    res = key
+                }
+            }
+            return res
+        }
+        console.log(countChar2("MMsdaMMzaf"))
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,127 @@
+note source: bilibili pink
+
+CSS
+  层叠样式表，Cascading Style Sheets
+
+语法：
+  选择器名 {
+    属性：值;
+    键值对...
+  }
+
+CSS三大特性：
+  层叠性：选择器样式冲突时，遵循就近原则；不冲突时，样式叠加
+  继承性：子标签会继承父标签的样式
+  优先级：选择器权重 来决定：
+      继承 通配       0000
+      标签 伪元素      0001
+      类 伪类 交集     0010   CSS3新增的属性选择器也为 0010
+      id             0100
+      行内            1000
+      !important     无穷大
+
+CSS引入方式：
+  行内式：利用属性 style="css样式"
+  内嵌式：利用标签 <style> 选择器 </style>
+  外链式：利用标签 <link rel="styleSheet" href="css文件路径">
+
+属性有几大类：
+  font            字体：  样式 粗细 字号/行高 字体
+  text            文本：  颜色 对齐 装饰 缩进 行高 阴影 省略(text-overflow: ellipsis;)
+  white-space     文本是否换行显示，默认normal 不换行：nowrap
+  background      背景：  颜色 图片 平铺 位置 固定 透明度 ，重要应用：精灵图（设置背景图片位置）
+  border          边框：  宽度 样式 颜色 圆角
+  margin          外边距：上、下、左、右
+  padding         内边距
+  cusor           鼠标   pointer手形
+  float           浮动
+  position        定位
+  z-index         定位盒子的叠放次序
+  clear           清除浮动 both left right
+  overflow        溢出，hidden可隐藏溢出部分    可用于防止margin塌陷、实现清除浮动
+  box
+    box-sizing    盒模型：W3C IE
+    box-shadow    阴影    h-shadow v-shadow blur spread color inset
+  display         显示方式、是否隐藏
+  vertical-align  行内元素专有属性，设置行内或行内块元素的垂直对齐方式 默认基线baseline 顶线top 中线middle 底线bottom
+
+属性推荐书写顺序：
+  浮动定位  display position float clear visibility overflow
+  自身属性  width height margin padding border background ...
+  文本属性  color font text white-space break-word ...
+  其他属性  content cursor border-radius box-shadow text-shadow ...
+
+
+
+盒子模型（CSS3新增）：
+  W3C盒模型： box-sizing: content-box 默认值，会撑开盒子
+  IE盒模型：  box-sizing: border-box  不撑开盒子
+
+
+元素分类：
+  行内式：    宽高不可改变，可一行排列，span label a
+  块级        独占一行，宽高可变
+  行内块      宽高可变，可一行排列（但是自动会有间隙，可用浮动解决），天生的行内块元素：input button
+
+
+页面布局核心：
+  标准流    块级盒子上下排列，行内盒子左右排列
+  浮动      盒子一行排列（行内块），一行放不下则换行继续浮动
+  定位      元素可自由定位在盒子中，有层叠效果
+
+页面布局思路：
+  1，确定HTML结构：
+      确定版心
+      分析行模块
+      分析行内的列模块，一般采取浮动（确定列大小、边距）
+  2，再写CSS样式
+
+浮动：
+  用于块级盒子的横向排列
+  float: left 
+
+  清除浮动：
+    用于父级标准流盒子自适应浮动的子盒子
+    方法：
+      W3C推荐隔墙法           末尾添加一个空的块级盒子，设置其 clear: both;
+      父级添加overflow属性     overflow: hidden;
+      父级添加after伪元素
+      父级添加双伪元素
+
+  浮动的特性：
+      1，浮动后具有行内块元素的特性（行内元素可直接设置宽高）
+      2，浮动的盒子不会有外边距塌陷问题
+      3，浮动的盒子不会压住其他标准流的文字/图片
+
+定位：
+  用于固定盒子在父盒子中的位置，并且可以压住其他盒子
+  定位由偏移、模式  确定
+
+  定位偏移：
+    定位专有属性：top bottom left right 表示四个方向的偏移距离
+  定位模式：
+    position属性：static静态 relative相对 absolute绝对 fixed固定
+      static 静态定位：
+        按标准流摆放位置，没有边偏移，很少使用
+      relative 相对定位：
+        相对原位置的定位，移动后的位置由top bottom left right确定，原位置保留
+      absolute 绝对定位：
+        无父元素或父元素未设置定位，则以document为参考
+        祖先元素有定位（常为相对定位），则以祖先元素为参考
+      fixed 固定定位：
+        可视窗口为参考，脱标
+      sticky 粘性定位：
+        可视窗口为参考，不脱标，上下左右偏移只且仅一个生效（固定定位、相对定位）
+
+  定位的特性：
+      1，行内元素定位后可直接设置宽高（定位前宽高设置无效）
+      2，块级元素定位后宽度默认为内容宽度（定位前宽度为100%）
+      3，浮动、定位都不会有外边距塌陷问题
+      4，定位的盒子会压住其他盒子的所有内容（定位盒子之间比较z-index值）
+
+盒子的隐藏、显示：
+  display: none;          隐藏后不占用原位置，block显示
+  visibility: hidden;     隐藏后保留原位置，visible显示
+  overflow: hidden;       隐藏溢出部分，默认visible，auto表示溢出时才显示滚动条，scroll表示显示滚动条
+  注意：
+    对于定位的盒子，overflow: hidden; 很可能会隐藏多余的部分

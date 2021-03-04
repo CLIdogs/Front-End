@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS3新增的盒子模型</title>
+  <style>
+    div {
+      width: 200px;
+      height: 200px;
+      margin: 30px auto;
+      background-color: pink;
+    }
+
+    /* content-box 会撑大盒子，盒子大小=content+padding+border */
+    .box1 {
+      box-sizing: content-box;
+      padding: 10px;
+      border: 20px solid skyblue;
+    }
+
+    /* border-box 不会撑大盒子，盒子固定大小: width height */
+    .box2 {
+      box-sizing: border-box;
+      padding: 10px;
+      border: 20px solid skyblue;
+    }
+  </style>
+</head>
+<!-- 
+  通过 box-sizing 属性设置
+      W3C盒模型     box-sizing: content-box;  默认值，盒子大小=width+padding+border，会撑大盒子
+      IE盒模型      box-sizing: border-box;   盒子大小=width，不会撑大盒子
+-->
+
+<body>
+  <div class="box1">content-box</div>
+  <div class="box2">border-box</div>
+</body>
+
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON格式</title>
+</head>
+<body>
+    <!-- JSON格式的作用：
+            用于描述数组或对象数据类型
+            由于前后端只能传递字符串，不能传递对象、数组类型的数据，利用JSON格式数据可以更加方便的传递对象和数组类型的数据。
+
+         关于JSON的两个方法：
+            JSON.parse(json_str)   JSON格式字符串解析为JS的数组或对象，返回对象或对象
+            JSON.stringify(obj)    JS的数组或对象转换为JSON格式字符串（函数自动过滤忽略），返回字符串
+
+         特点：
+            对象中的key value都要用双引号包裹，数值和布尔不需要引号
+            数组中可以放多个对象
+            放多个数据，则最后一个数据后不能有逗号
+            标点符号只能出现：大小括号、双引号、逗号        {} [] "" ,
+
+         注意：
+            一个对象经过parse() stringify()方法会得到一个一模一样的新对象，对原来的对象无影响
+
+
+     -->
+    <script>
+        var obj = {
+            name: 'Jack',
+            sex: 'man',
+            age: 20
+        }
+        var json_str = JSON.stringify(obj)          // JSON字符串化
+
+        console.log(obj)
+        console.log(typeof(json_str), json_str)
+
+        var json_str = '{"name": "jack","age": 18, "sex": "man"}'
+        obj = JSON.parse(json_str)                  // JSON格式字符串转为对象
+        console.log(obj)
+
+        var str = JSON.stringify(obj)       // 利用JSON方法得到一个一模一样的对象
+        var obj1 = JSON.parse(str)
+        obj1.name = "rose"
+        console.log(obj, obj1)
+        
+    </script>
+</body>
+</html>

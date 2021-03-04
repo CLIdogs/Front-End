@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>浏览器版本信息：window对象成员 —— navigator对象</title>
+
+</head>
+<body>
+  <!-- window.navigator 对象：
+    存储了浏览器的版本信息，便于兼容不同版本的浏览器。
+    属性：
+      userAgent   保存了浏览器的版本及型号信息
+      appName     应用程序名，所有浏览器统一为 netscape，致敬网景公司
+      platform    浏览器所在的操作系统，Win32、ios、android
+  -->
+
+  <script>
+    console.log(window.navigator.userAgent)
+    console.log(window.navigator.appName)
+    console.log(window.navigator.platform)
+  </script>
+</body>
+</html>

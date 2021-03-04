@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>元素显示模式专题</title>
+  <style>
+    div {
+      width: 200px;
+      height: 200px;
+      background-color: #ccc;
+    }
+
+    span {
+      width: 200px;
+      height: 200px;
+      background-color: skyblue;
+    }
+
+    input {
+      width: 200px;
+      height: 30px;
+    }
+  </style>
+</head>
+<!-- 元素的显示模式 
+
+HTML中元素的显示模式分为： 
+    块级元素：div li tr...
+      独占一行 宽高边距可设置（宽度默认100%）可内嵌行内和块级元素
+    行内元素：span a strong b em i del s ins u ...
+      不可设置宽高边距，宽度就是内容宽度，不可内嵌块级元素
+    行内块元素：img input td
+      兼具两者的特点：
+        默认宽度为内容宽度
+        宽高边距可设置
+        一行可显示多个元素，但其中会有间隙
+
+    注意：
+      文字类标签不可内嵌块级元素，如：
+        p标签不能内嵌块级元素
+        h1-h6也不能
+        a链接里面不允许再放链接
+        特殊的，a内可以放块级元素，最后先转换
+
+
+display属性用于转换：
+    display: block;           块级
+    display: inline;          行内
+    display: inline-block;    行内块
+
+
+-->
+
+
+<body>
+  <main>
+    <div>块级元素：div标签独占一行，默认宽度为100%，宽高边距可自定义，可内嵌行内和块级元素</div>
+    <span>行内元素：一行可放多个，宽高设置无效，宽度就是内容宽度，不可内嵌块级元素</span>
+    <input type="text" placeholder="input行内块元素">
+    <input type="text" placeholder="input行内块元素">
+  </main>
+</body>
+
+</html>

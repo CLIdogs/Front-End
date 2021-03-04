@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>各种数据类型的转换</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // 转为数值型：
+    var s1 = '100'
+    var s2 = '100abc'
+    var b1 = true
+    var b2 = false
+    var n = null
+
+    var s3 = Number(s2)     // Number()，成功则返回数值，失败返回NaN
+    console.log(Number(s1), Number(b1), Number(b2))
+    console.log(s3)
+
+    var s4 = parseInt(s2)   // parseInt()，依次看每一位，为数字则进行转换，否则停止转换
+    console.log(s4,parseInt(b1))         // parseFloat()，同理，只是会识别小数点
+
+        // Number()和parseInt()的区别就是：对于布尔型，前者true转为1、false转为0；而后者则全为NaN
+
+        // 隐式转换：
+    console.log(+s1, -s1, -s2)    // 正负运算，和Number()解析规则一样
+    console.log(s1*1, s1/1, s1-0, s2/1)  // 乘除减法运算，原理同上
+
+    // 转为字符串：
+    var s5 = String(b1)     // String()，任何数据类型都能转换
+    var s6 = String(b2)
+    console.log(s5, s6)
+    
+    var s7 = s5.toString()  // toString()，不能对 null 和 undefined类型数据进行转换
+    console.log(s7)         // console.log(n.toString())报错
+        // 隐式转换：
+    console.log(s1+1, s4+1, typeof(s4+'1'), typeof(s4+1)) // 只有+号两边都是数值或布尔时，才进行数学元素，否则进行字符串拼接
+
+    // 转为布尔型：
+    console.log(Boolean(0), Boolean(''), Boolean(NaN), Boolean(undefined), Boolean(null))   // Boolean()，只有 0 '' NaN undefined null转为false，其他全部转换为true
+
+    
+
+</script>
+</html>

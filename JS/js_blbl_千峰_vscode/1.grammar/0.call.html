@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>初探js</title>
+  <link rel="stylesheet" href="#">
+  <script src="test.js"></script>
+</head>
+<!-- 介绍js的三种书写方式：
+        1，行内式
+        2，内嵌式   script标签，推荐写在body内的末尾（放在body和head末尾有略微区别）
+        3，外链式   script标签的src进行引入js文件，打开页面即执行
+-->
+
+<body>
+  <!-- 行内式，强烈不推荐
+        a标签（自带跳转功能，href）：
+            href="javascript: js代码;"   表示执行js代码，而不跳转页面
+        非a标签（手动加行为）：
+            onclick = "js代码"：   点击则执行js
+  -->
+  <a href="javascript: alert('hello js')">click here</a>
+  <div onclick="alert('hello world')">click here</div>
+  <!-- 内嵌式，不推荐
+        在页面内写script标签，表示js代码，打开页面就会自动执行script标签内的js代码
+            <script> js代码 </script>
+        特点：
+            可以写多个script标签（任何位置），从上到下依次执行。
+        提示：
+            写在head中和body标签内的末尾有一点区别：
+              写在head中可能会报错，因为页面资源还未加载完全，有些变量可能还未声明就已经使用
+                解决方法：  将逻辑代码写在 window.onload = function(){ 逻辑代码 }内，详见29.window.onlaod.html
+              写在body尾部，则页面已经全部加载完了
+
+  -->
+  <script>
+    alert('script标签实现内嵌js代码')
+  </script>
+
+  <!-- 外链式，推荐
+        将js代码写在js文件中，再通过script标签的src属性进行引入。打开页面即执行
+     -->
+</body>
+
+</html>

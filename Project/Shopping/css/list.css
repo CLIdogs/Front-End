@@ -1,0 +1,237 @@
+.nav {
+  overflow: hidden;
+}
+
+/* 秒杀页面的秒杀图片模块 */
+.sk {
+  position   : absolute;
+  left       : 190px;
+  top        : 53px;
+  border-left: 1px solid #c81523;
+  padding    : 3px 0 0 14px;
+}
+
+.sk img {
+  width: 30px;
+}
+
+.sk_list {
+  float: left;
+}
+
+.sk_list ul li {
+  float      : left;
+  line-height: 47px;
+  padding    : 0 30px;
+  font-size  : 16px;
+  font-weight: 700;
+  color      : #000;
+}
+
+/* .sk_list ul li a {
+  display: block;
+  line-height: 47px;
+  padding: 0 30px;
+  font-size: 16px;
+  font-weight: 700;
+  color: #000;
+} */
+
+.sk_con {
+  float: left;
+
+}
+
+.sk_con ul li {
+  float      : left;
+  line-height: 50px;
+  padding    : 0 20px;
+  font-size  : 14px;
+}
+
+.sk_con ul li:last-child a::after {
+  content    : '\EA50';
+  font-family: 'icomoon';
+}
+
+.nav .w::after {
+  display: block;
+  clear  : both;
+  content: '';
+}
+
+.sk_hd img {
+  width : 100%;
+  height: 100px;
+}
+
+
+/* 在商品主区域的首尾插入伪元素来清除浮动 */
+article::before,
+article::after {
+  content: '';
+  display: table;
+}
+
+article::after {
+  clear: both;
+}
+
+article {
+  background-color: #f7f7f7;
+}
+
+article .goods {
+  float           : left;
+  width           : 200px;
+  height          : 300px;
+  background-color: #fff;
+  margin          : 10px 0 10px 33px;
+  color           : #666;
+}
+
+article::after {
+  content   : '';
+  display   : block;
+  clear     : both;
+  height    : 0;
+  visibility: hidden;
+}
+
+article .goods:hover {
+  box-shadow: 1px 2px 5px 2px rgba(0, 0, 0, 0.4);
+  transition: all 0.5s;
+}
+
+.goods:hover>.goods_bar>.progress_bar>.run {
+  width     : 64px;
+  transition: width 1s;
+}
+
+/* 在每行末尾清除浮动（一行四个） */
+/* article .goods:nth-of-type(4n)::after {
+      content: "";
+      display: block;
+      clear: both;
+      visibility: hidden;
+      height: 0;
+    } */
+
+.goods img {
+  display: block;
+  width  : 180px;
+  height : 170px;
+  margin : 10px;
+}
+
+.goods p {
+  /* 实现多行的省略替换 */
+  overflow          : hidden;
+  text-overflow     : ellipsis;
+  /* 弹性伸展盒模型显示 */
+  display           : -webkit-box;
+  /* 限制块元素的显示文本行数 */
+  -webkit-line-clamp: 2;
+  /* 设置子盒子的排列方式 */
+  -webkit-box-orient: vertical;
+  height            : 30px;
+  margin            : 0 10px;
+  line-height       : 15px;
+  font-size         : 13px;
+}
+
+.goods p:hover {
+  color          : #f00;
+  text-decoration: underline;
+  cursor         : default;
+}
+
+.goods_price {
+  width           : 180px;
+  height          : 20px;
+  background-color: #fff;
+  margin          : 5px 10px 5px;
+  text-decoration : line-through;
+  color           : #666;
+  font-size       : 10px;
+  font-weight     : 700;
+  line-height     : 30px;
+}
+
+.goods_price .curr_price {
+  float      : left;
+  font-style : normal;
+  color      : red;
+  font-size  : medium;
+  font-weight: 700;
+  line-height: 25px;
+}
+
+.goods .goods_bar {
+  position   : relative;
+  width      : 180px;
+  height     : 15px;
+  margin     : 0 10px;
+  font-size  : 10px;
+  line-height: 15px;
+  text-align : center;
+  cursor     : default;
+}
+
+
+.goods .goods_bar .remain,
+.goods .goods_bar .sale {
+  position   : absolute;
+  top        : 0;
+  height     : 15px;
+  line-height: 15px;
+}
+
+.goods .goods_bar .sale {
+  left: 0;
+}
+
+.goods .goods_bar .remain {
+  right: 0;
+}
+
+.goods .goods_bar .sale span,
+.goods .goods_bar .remain span {
+  color: red;
+}
+
+.goods .goods_bar .progress_bar {
+  display         : inline-block;
+  overflow        : hidden;
+  width           : 80px;
+  height          : 10px;
+  background-color: #fff;
+  border          : 1px solid red;
+  border-radius   : 6px;
+  vertical-align  : middle;
+}
+
+.goods .goods_bar .progress_bar .run {
+  height          : 10px;
+  width           : 15px;
+  background-color: red;
+  border-radius   : 5px;
+}
+
+.goods .goods_bar:hover .run {
+  width     : 64px;
+  transition: width 1s;
+}
+
+.goods a {
+  display         : block;
+  width           : 200px;
+  height          : 30px;
+  background-color: red;
+  margin          : 5px 0 0;
+  text-decoration : none;
+  text-align      : center;
+  line-height     : 30px;
+  color           : #fff;
+  font-size       : 13px;
+}

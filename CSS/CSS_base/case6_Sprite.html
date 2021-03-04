@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>实现精灵图</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+
+    .box1 {
+      width: 60px;
+      height: 60px;
+      margin: 30px auto;
+      background: url(./images/1.jpg) no-repeat -5px 0;
+      border-radius: 50%;
+    }
+  </style>
+</head>
+<!-- 
+  精灵图：
+    把许多图片（背景图片、小图标等）放在一张大图片上，只需要请求一次
+
+  精灵图的作用：
+    防止浏览器频繁请求图片资源，降低服务器压力，提高加载速度
+
+  原理：
+    通过 background-position 属性来精确移动背景图片的位置
+  
+-->
+
+<body>
+  <div><img src="./images/1.jpg" alt="1.jpg"></div>
+  <div class="box1"></div>
+</body>
+
+</html>

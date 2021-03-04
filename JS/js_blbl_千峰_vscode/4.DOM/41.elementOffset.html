@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>元素的偏移量</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+
+    div {
+      width: 500px;
+      height: 500px;
+      margin: 30px;
+      background-color: #ccc;
+      overflow: hidden; /*防止margin塌陷，而把父元素拉下来*/
+      position: relative; /* 子元素据此定位 */
+    }
+
+    p {
+      width: 200px;
+      height: 200px;
+      margin: 50px;
+      background-color: pink;
+      /* position: absolute;
+      left: 50px;
+      top: 30px; */
+    }
+  </style>
+</head>
+<!-- 元素的偏移量（相对的）
+      元素.offsetParent     获取参考的父级元素
+      元素.offsetTop        元素上边的相对偏移量
+      元素.offsetLeft       元素左边的相对偏移量
+
+-->
+<body>
+  <div>
+    <p></p>
+  </div>
+  <script>
+    var p = document.querySelector('p')
+    var div = document.querySelector('div')
+
+    console.log(p.offsetParent)
+    console.log(p.offsetTop)
+    console.log(p.offsetLeft)
+
+  </script>
+</body>
+
+</html>

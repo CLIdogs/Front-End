@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>其他事件</title>
+  <style>
+    div {
+      width: 100px;
+      height: 100px;
+      background-color: pink;
+      transition: all 3s linear;
+    }
+    div:hover {
+      width: 200px;
+      height: 200px;
+    }
+  </style>
+</head>
+<!-- 其他事件：
+      transitionend     过渡结束，设置了过渡属性时，有多个过渡属性（如Width Height）则触发多次
+      selectstart       选择页面中的文本时触发
+      visibilitychange  窗口隐藏、显示时触发，只能绑定给document
+-->
+<body>
+  <div>abc</div>
+  def
+  <script>
+    var div = document.querySelector('div')
+    div.ontransitionend = function () {
+      console.log('过渡结束')
+    }
+    document.onselectstart = function(e) {
+      e.preventDefault()    // 禁止默认行为，即不能选择文本
+      console.log('你想框选')
+    }
+    document.onvisibilitychange = function() {
+      console.log('隐藏显示状态改变了')
+    }
+  </script>
+</body>
+</html>

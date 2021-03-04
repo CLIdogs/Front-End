@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>本地缓存</title>
+</head>
+
+<body>
+    <!--
+        缓存的作用：
+            提供在本机上缓存数据的机制，不需要每次都刷新，提高响应速度
+        缓存方法：
+            localStorage
+            sessionStorage
+
+        区别：
+            localStorage：      永久缓存，删除需要手动进行
+            sessionStorage:     会话缓存，关闭浏览器就清空了
+
+        共同点：
+            只能存储 字符串格式 数据
+
+        具体操作：
+            localStorage：
+                localStorage.setItem('key',value)     增加一个键值对成员
+                localStorage.getItem('key')            获取一个指定key的value
+                localStorage.removeItem('key')          清空指定键值对成员
+                localStorage.clear()                    清空所有键值对
+
+            sessionStorage：
+                sessionStorage.setItem('key',value)     增加一个键值对成员
+                sessionStorage.getItem('key')            获取一个指定key的value
+                sessionStorage.removeItem('key')          清空指定键值对成员
+                sessionStorage.clear()                    清空所有键值对
+
+e.setItem('key','value')   
+
+     -->
+    <script>
+        //  localStorage:
+
+        //  手动添加键值对
+        localStorage.setItem('name', 'jack')    // 浏览器中查看：控制台 -> application -> localStorage
+        var obj = {
+            name: 'jack',
+            age: '18'
+        }
+        localStorage.setItem('obj', JSON.stringify(obj))
+
+        // 获取一条localStorage存储的数据
+        var str1 = localStorage.getItem('name')     // 不存在这个键，则返回 null
+        var str2 = localStorage.getItem('obj')
+        console.log(str1)
+        console.log(str2)
+
+        // 手动删除指定键值对
+        localStorage.removeItem('name')
+
+        // 手动清空所有键值对
+        // localStorage.clear()
+
+
+
+        // sessionStorage:同理
+
+        sessionStorage.setItem('age', 18)    // 浏览器中查看：控制台 -> application -> sessionStorage
+        sessionStorage.setItem('obj', JSON.stringify(obj))
+
+        var str1 = sessionStorage.getItem('name')     // 不存在这个键，则返回 null
+        var str2 = sessionStorage.getItem('obj')
+        console.log(str1)
+        console.log(str2)
+        console.log(typeof sessionStorage.getItem('age')) // age值变为字符串了
+        
+        // sessionStorage.removeItem('age')
+
+        // localStorage.clear()
+
+
+
+
+
+    </script>
+</body>
+
+
+</html>

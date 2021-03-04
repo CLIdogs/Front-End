@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>盒子模型 —— 页面布局核心之一</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    div.box1,
+    div.box3,
+    div.shadow {
+      width: 100px;
+      height: 100px;
+      background-color: #ccc;
+      /* 给父级元素 .box3 设置margin */
+      margin: 30px 0px;
+    }
+
+    div>.box2 {
+      /* 不设置宽度，则不会撑大盒子 */
+      /* width: 100px; */
+      height: 50px;
+      /* 边框：border-width border-style border-color */
+      border: 5px solid pink;
+      /* 圆角边框： */
+      /* border-radius: 30%; */
+      border-radius: 20px;
+      /* 内边距：上、左右、下；上、有、下、左 */
+      padding: 5px;
+    }
+    
+    .box3>div {
+      width: 50px;
+      height: 50px;
+      background-color: skyblue;
+      /* 由于和父盒子设置了同样的margin，则采用较大值 */
+      margin-top: 40px;
+    }
+    
+    div.shadow {
+      background-color: pink;
+    }
+    
+    div.shadow:hover {
+      /* 盒子阴影：垂直水平坐标 模糊距离 尺寸 颜色 inset内部阴影*/
+      box-shadow: 5px 5px 10px -4px rgba(0,0,0,0.3);
+    }
+    
+    table {
+      width: 100px;
+      height: 100px;
+      /* 内边距 */
+      padding: 5px;
+      /* 外边距：块级盒子居中显示（必须设置宽度） */
+      margin: 30px auto;
+      /* 默认W3C盒模型 */
+      box-sizing: content-box;
+    }
+
+    /* 扩展：
+          行内、行内块元素水平居中只需要给父元素添加 text-align: center 即可
+     */
+    .table,
+    td {
+      border: 1px solid skyblue;
+      /* 边框合并 */
+      border-collapse: collapse;
+      text-align: center;
+    }
+  </style>
+</head>
+<!-- 
+    盒子的组成部分：
+        margin + border + padding + content
+    盒子模型：
+        W3C盒模型   box-sizing: content-box   默认，宽度 = content宽度，盒子会膨胀
+        IE盒模型    box-sizing: border-box    宽度 = content + padding + border，盒子不膨胀
+    padding内边距:
+        不设置宽度，则padding不会撑开盒子
+    margin外边距：
+        常用于实现盒子对齐：
+          块级盒子          margin: 0 auto; 前提要设置宽度
+          行内、行内块盒子    给父元素添加 text-align: center;
+
+        注意：
+          嵌套块级盒子的塌陷问题：父子盒子都设置了相同的margin，则采取较大的margin显示
+          解决方案：
+            给父盒子添加    border: 1px solid transparent
+            给父盒子添加    padding: 1px
+            给父盒子添加    overflow: hidden
+          拓展：
+            浮动、固定、绝对定位 的盒子没有塌陷问题
+    盒子阴影：
+        box-shadow: h-shadow v-shadow blur spread color inset
+
+
+-->
+
+<body>
+  <main>
+    <div class="box1">
+      <div class="box2"></div>
+    </div>
+
+    <div class="box3">
+      <div></div>
+    </div>
+
+    <div class="shadow"></div>
+
+    <table class="table" cellspacing="0">
+      <thead>
+        <tr>
+          <td>th1</td>
+          <td>th2</td>
+          <td>th3</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>2</td>
+          <td>3</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>5</td>
+          <td>6</td>
+        </tr>
+      </tbody>
+    </table>
+  </main>
+</body>
+
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>流程控制语句</title>
+</head>
+
+<body>
+    <!-- 流程控制语句
+            分支：if        switch
+            循环：while     dowhile     for
+     -->
+
+    <!-- 和c语言的语法是一样的 -->
+
+    <script>
+        // 分支语句
+        var b = 18
+        if (b <= 15) {              // if
+            console.log('b <= 15')
+        } else if (b > 15 && b < 20) {
+            console.log('15 < b < 20')
+        } else {
+            console.log('b >= 20')
+        }
+
+        var month = 2
+        var year = 2021
+        switch (month) {            // switch
+            case 1:
+            case 3:
+            case 5:
+            case 7:
+            case 8:
+            case 10:
+            case 12:
+                console.log('31天')
+                break
+            case 4:
+            case 6:
+            case 9:
+            case 11:
+                console.log('30天')
+                break
+            case 2:
+                if (!(year % 4) && year % 100 || !(year % 400))
+                    console.log('29天')
+                else
+                    console.log('28天')
+                break
+            default:
+                console.log('数据不合法')
+                break
+        }
+
+        // 循环语句
+        var temp = 1, sum = 0
+        while (temp <= 10) {        // while
+            sum += temp
+            temp++
+        }
+        console.log(sum)
+
+        var jc = 5
+        var res = jc
+        while (--jc) {
+            res *= jc
+        }
+        console.log(res)
+
+        do {                        // do...while
+            console.log(jc)
+        } while (jc)    // true时，循环继续
+
+        for (var i = 1; i < 8; i++) {       // for
+            for (var j = 1; j <= i; j++)
+                document.write('* ')
+            document.write('<br>')
+        }
+
+        document.write("<hr>")
+
+        for (var i = 1; i < 8; i++) {
+            for (var j = 1; j < 8 - i + 1; j++)
+                document.write("* ")
+            document.write("<br>")
+        }
+
+        document.write("<hr>")
+
+        for (var i = 1; i < 8; i++) {
+            for (var j = 1; j < i; j++) {
+                document.write("&nbsp;&nbsp;")
+            }
+            for (var z = 1; z < 8 - i + 1; z++) {
+                document.write("* ")
+            }
+            document.write("<br>")
+        }
+
+        document.write("<hr>")
+
+        for (var i = 1; i < 8; i++) {
+            for (var j = 1; j < 8 - i; j++) {
+                document.write('&nbsp;')
+            }
+            for (var j = 1; j <= i; j++) {
+                document.write('* ')
+            }
+            document.write("<br>")
+        }
+
+        document.write("<hr>")
+
+        var count = 0;
+        for (var i = 1990; i <= 2021; i++) {
+            if (!(i % 4) && i % 100 || !(i % 400)) {
+                document.write(i + "&nbsp;")
+                count++
+                if (!(count % 4))
+                    document.write("<br>")
+            }
+        }
+
+    </script>
+
+</body>
+
+</html>

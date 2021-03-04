@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>定位 —— 页面布局核心之一</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+
+    body {
+      height: 3000px;
+      background-color: #ccc;
+    }
+
+    div {
+      width: 200px;
+      height: 200px;
+      background-color: pink;
+      margin-bottom: 30px;
+    }
+
+    .box1 {
+      position: relative;
+      left: 10px;
+      top: 10px;
+    }
+
+    .box1>.in {
+      width: 100px;
+      height: 100px;
+      background-color: skyblue;
+      position: relative;
+      top: 20px;
+      left: 30px;
+    }
+
+    .box2 {
+      position: relative;
+      /* position: absolute; */
+      left: 100px;
+      top: 100px;
+    }
+
+    .box2>.in {
+      position: absolute;
+      bottom: 10px;
+      right: 20px;
+      width: 50px;
+      height: 50px;
+      border: 1px solid black;
+      margin: 0;
+    }
+
+    .box3 {
+      position: fixed;
+      top: 20px;
+      right: 10px;
+    }
+
+    .nav {
+      position: sticky;
+      /* top=0时，固定 */
+      top: 0px;
+      width: 800px;
+      height: 50px;
+      margin: 100px auto;
+    }
+
+    .side {
+      position: sticky;
+      top: 50px;
+      width: 50px;
+      height: 300px;
+      margin: auto 200px auto auto;
+      background-color: skyblue;
+    }
+  </style>
+
+</head>
+<!-- 定位的特性：
+      和浮动类似，行内元素定位后可直接设置宽高
+-->
+
+<!-- static静态定位：相当于标准流、不脱标、不能使用边偏移、很少使用 -->
+
+<body>
+  <!-- 4，粘性定位 -->
+  <div class="nav">粘性定位：到达指定位置时固定，IE不支持</div>
+  <div class="side">侧边栏</div>
+
+  <!-- .box1也设置了相对定位，会压住其他盒子，原位置不脱标 -->
+  <div class="box1">
+    <!-- 1，相对定位：相对于父元素的位置 -->
+    <div class="in">相对定位：相对父元素，原位置不脱标</div>
+  </div>
+
+  <!-- 2，绝对定位：相对于指定祖先元素的位置，脱标 -->
+  <div class="box2">
+    绝对定位：脱标
+    <br>&nbsp;
+    无父元素或父元素未设置定位，则以document为参考
+    <br>&nbsp;
+    祖先元素有定位（相对、绝对、固定），则以最近祖先为参考
+    <div class="in">内部div</div>
+    <!-- 注意：祖先元素常为相对定位，因为相对定位元素的原位置不脱标 -->
+  </div>
+
+  <!-- 3，固定定位 -->
+  <div class="box3">固定定位：以浏览器窗体为参考，脱标，不随滚动条变化</div>
+  <!-- 固定盒子到版心右侧的技巧：固定left到50%可视区域 + 盒子margin-left=50% -->
+
+  <!-- 可以通过 z-index属性设置叠放次序，默认为auto -->
+  <!-- z-index: 1; 值越大越优先显示-->
+</body>
+
+</html>

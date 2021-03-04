@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>地址栏：window对象成员 —— location对象</title>
+</head>
+
+<body>
+  <!-- 地址的说明：
+        包含的内容：如 https://www.tencent.com?a=1&b=2#q979q7
+          传输协议    前后端交互的方式      https
+          域名       指定服务器           www.tencent.com
+          查询字符串  打开页面时携带的信息   ?a=1&b=2
+          哈希值      锚点定位            #q79q7
+
+      location对象：存储网页地址的所有相关信息。
+          属性：
+            hash：当前页面的hash值
+            host：服务器域名
+            hostname：主机名
+            href：可读写，保存了当前地址栏地址
+              读：获取页面地址（不允许出现中文（存储的是url编码格式），经浏览器处理显示中文的
+              写：设置页面地址（跳转页面）
+            search：当前地址中的查询字符串，如?a=1&b=2
+              JS不提供search字符串的解析，需要手动解析，见22.utils.js
+          方法：
+            reload()  重新加载当前页面
+              不能在打开页面时执行，否则一直重新加载
+   -->
+  <script>
+    console.log(window.location)
+  </script>
+</body>
+
+</html>

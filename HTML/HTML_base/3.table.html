@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>表格专题</title>
+</head>
+<!-- html5的table属性：
+        align         表格对齐：center left right
+        border        边框：值  默认''
+        cellpadding   单元格内边距 默认1px
+        cellspacing   单元格间隙 默认2px
+        width         表格宽度
+-->
+
+<body>
+  <main>
+    <p>table表格：align border cellpadding cellspacing width </p>
+    <table align="center" border="1" cellspacing="0" cellpadding="5" width="500">
+      <!-- 表头 -->
+      <thead>
+        <tr>
+          <td>one</td>
+          <td>two</td>
+          <td>three</td>
+          <td>four</td>
+        </tr>
+      </thead>
+      <!-- 表的主体部分 -->
+      <tbody>
+        <tr>
+          <td>11</td>
+          <td>12</td>
+          <td>13</td>
+          <td>14</td>
+        </tr>
+        <tr>
+          <td>21</td>
+          <td>22</td>
+          <td>23</td>
+          <td>24</td>
+        </tr>
+        <tr>
+          <td>31</td>
+          <td>32</td>
+          <td>33</td>
+          <td>34</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>合并单元格：td属性（rowspan colspan）</p>
+    <!-- 利用td标签的属性：
+            rowspan=""  行合并
+            colspan=""  列合并
+    -->
+    <table align="center" border="1" cellspacing="0" cellpadding="5" width="500">
+      <thead>
+        <tr>
+          <td>one</td>
+          <td>two</td>
+          <td>three</td>
+          <td>four</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td colspan="2">11</td>
+          <td>12</td>
+          <td rowspan="2">13</td>
+        </tr>
+        <tr>
+          <td>21</td>
+          <td>22</td>
+          <td>23</td>
+        </tr>
+        <tr>
+          <td>31</td>
+          <td colspan="3">32</td>
+        </tr>
+      </tbody>
+    </table>
+  </main>
+</body>
+
+</html>

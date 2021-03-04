@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS实现三角形案例</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+
+    .box {
+      position: relative;
+      width: 150px;
+      height: 50px;
+      background-color: #ccc;
+      margin: 50px auto;
+      border-radius: 5px;
+    }
+
+    .box span {
+      position: absolute;
+      right: -20px;
+      top: 15px;
+      border: 10px solid transparent;
+      border-left: 10px solid #ccc;
+    }
+  </style>
+</head>
+<!-- 通过设置 border的显示和透明 来显示三角形 -->
+<body>
+  <div class="box">
+    利用border、绝对定位 实现
+    <span></span>
+  </div>
+</body>
+
+</html>

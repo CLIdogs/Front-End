@@ -1,0 +1,17 @@
+Emmet语法用于快速生成代码，节约开发时间
+
+多个div标签：    div*3
+
+标签内部文本：    div{div标签}
+自增符号（从1递增）div*3{$}
+
+带类名的标签：   div.classname
+  
+带id名的标签：   div#idname
+
+带其他属性的标签：div[key]
+
+父子关系的标签：  ul>li*3
+
+兄弟关系的标签：  div+p
+

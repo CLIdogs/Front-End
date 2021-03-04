@@ -1,0 +1,339 @@
+一、Array
+
+  定义数组：
+      var arr = [值];
+      var arr = new Array(值);
+
+  属性：
+    数组长度：数组名.length
+    添加属性或方法：Array.prototype.自定义方法
+
+  方法：
+     判断是否为数组：
+      Array.isArray(数组名)   是则返回true
+    转字符串：
+      数组名.toString()   字串中元素之间用逗号分隔
+       
+    增：
+      后插：数组名.push()
+      前插：数组名.unshift()
+    删：
+      后删：数组名.pop()
+      前删：数组名.shift()
+    改：
+      数组名[index] = xxx
+    查：
+      按索引查：数组名[index]
+      按条件查：
+        返回符合条件的第一个元素：
+          数组名.find(function(item,index,arr){条件})
+        返回符合条件的首个元素的索引：
+          数组名.findIndex(function(item,index,arr){条件})
+    遍历：
+        无返回值：数组名.forEach(function(item,index,arr) {逻辑代码})
+    获取索引：
+        返回索引：数组名.indexOf(数据,start)
+        返回索引：数组名.lastIndexOf(数据,start)
+    判断：
+        1，判断是否存在某个元素，返回布尔：数组名.includs(数据)
+        2，判断是否存在某个元素符合条件，返回布尔：数组名.some(function(item,index,arr){return 条件;})
+        3，判断是否全部符合条件，返回布尔：数组名.every(function(item,index,arr) {return 条件;})  全部元素都符合才返回true
+    反转：
+      返回数组：数组名.reverse()
+    排序：
+      返回数组：数组名.sort(func)   可省略func
+      注意：
+        1，默认按字母升序排列
+        2，按ASCAII码排序，升序：function(a,b) {return a-b}，降序：function(a,b) {return b-a}
+        3，会改变原数组
+    映射：
+      返回数组：数组名.map(function(item,index,arr){...; return 结果;})
+    条件过滤：
+      返回数组：数组名.filter(function(item,index,arr){逻辑代码})
+    填充：
+      返回改变后的原数组：数组名.fill(des_data,start,end)
+
+    拼接和连接：
+      拼接：返回新数组，数组名.concat(数组/数据)    末尾添加，不改变原数组
+      连接：返回字符串，数组名.join(连接符号)       用连接符号连接所有元素，默认用逗号连接
+
+    替换（会改变原数组）：
+      splice()实现删除、添加、替换：
+        替换：数组名.splice(start,count,data...)    start开始count个元素替换为data...，返回含被替换元素的数组
+        省略data则为删除，返回含被删除元素的数组
+        count=0则为添加data到start索引处，返回添加元素后的数组
+      copyWithin()实现子数组替换：
+        用子数组依次替换到目标位置：数组名.copyWithin(des_index,start,end)  将[start,end)元素依次替换des_index...
+
+    切割子数组：
+      返回[start,end)的子数组：数组名.slice(start,end)
+      注意：
+        1，原数组不改变
+        2，end省略默认到末尾
+        3，start和end可用负数表示，表示从后开始数（倒数第一个为-1）
+    扁平化：
+      返回降维后的数组：数组名.flat(dim)    将数组每个元素降dim维数，默认降一维，不改变原数组，Infinity代表降到一维
+    扁平化且映射：
+      返回新数组：数组名.flatMap(function(item,index,arr) { ...; return 结果; })
+    
+
+
+二、String
+
+  任何方法都不会改变字符串内容，只会创建新字符串返回
+
+  定义字串：
+    var str='xxx'
+    var str=new String('xxx')
+
+  属性：
+    字串长度：字串名.length
+    添加属性或方法：String.prototype.属性/方法
+
+  方法：
+    大小写转换：
+      toLowerCase()
+      toUpperCase()
+    查：
+      查询指定索引的字符：
+        str.charAt(index)         返回字符
+        str.charCodeAt(index)     返回UTF8编码
+      查询指定字串的位置：
+        str.indexOf(str, start)   从start开始查询
+        str.lastindexOf(str,start)
+        str.search(str)           返回索引，不存在返回-1
+    替换：
+        str.replace(str1, str2)   str1替换为str2（只替换第一个），可以正则匹配
+    正则匹配：
+        str.match(str)            返回数组，记录了所有匹配的字符串
+    判断：
+      判断字串是否存在：
+        str.includes(str, start)
+      判断是否以指定字串开始或结束：
+        str.startsWith(str1)
+        str.endsWith(str1)
+
+    获取子串：
+      str.substr(start,count)
+      str.subString(start,end)
+    拼接：
+      str.concat(str1)
+    切割子串：
+      str.slice(start,end)
+    去除空格：
+      str.trim()
+      str.trimStart()
+      str.trimEnd()
+    填补字符串：
+      str.padStart(des_length,des_str)
+      str.padEnd(des_length,des_str)
+    
+
+
+
+三、cache缓存
+  本地缓存 —— localStorage
+    永久缓存，需要手动删除
+    设置：
+      localStorage.setItem('key',value)
+    获取：
+      localStorage.getItem('key')
+    清除：
+      localStorage.removeItem('key')
+      localStorage.clear()
+
+  会话缓存 —— sessionStorage
+    设置：
+      sessionStorage.setItem('key',value)
+    获取：
+      sessionStorage.getItem('key')
+    清除：
+      sessionStorage.removeItem('key')
+      sessionStorage.clear()
+
+
+
+四、数学函数
+  Math.random()     随机数[0,1)
+  Math.round(数字)   四舍五入
+  Math.ceil(数字)
+  Math.floor(数字)
+
+  Math.pow(底,指)   取幂
+  Math.sqrt(数字)   开方
+
+  Math.abs(数字)    绝对值
+
+  Math.max(...)
+  Math.min(...)
+
+  保留小数：
+    数字.toFixed(小数位数)
+
+
+五、进制转换
+  转为十进制：
+    window.parseInt(数值,当前进制)
+  转为其他进制：
+    数值.toString(目标进制)
+
+
+
+
+六、定时器
+  定时器是异步的，所有同步代码执行后才会执行
+  都返回定时器序数。
+  延时定时器：
+    window.setTimeout(func, time) time毫秒后执行func函数
+  间隔定时器：
+    window.setInterval(func, time) 每time毫秒执行一次func函数
+  
+  关闭定时器（可通用）：
+    window.clearTimeout(定时器序数)
+    window.clearInterval(定时器序数)
+
+
+
+七、JSON方法
+  window.JSON.parse(str)      将json格式的字符串str解析为数组或对象并返回
+  window.JSON.stringify(obj)  将数组或对象转换为JSON格式的字符串并返回
+
+
+
+BOM
+
+八、window.location对象
+  属性：
+    location.hash      页面哈希值
+    location.host      服务器域名
+    location.hostname  主机名
+    location.href      页面地址
+    location.search    查询字符串
+    location.pathname  路径名
+    location.port      端口
+    location.protocol  协议
+
+  方法：
+    location.reload()  重新加载
+    location.assign(url)  加载新文档（可回退到上一页面）
+    location.replace(url) 替换当前文档（不可退回上一页）
+
+
+九、window.history对象
+  属性：
+    history.length                历史记录数
+    history.scrollRestoration     前进/后退时滚动条的位置
+    history.state                 
+  方法：
+    history.back()        上一页
+    history.forward()     下一页
+    history.go(n)       回退/前进n页
+
+
+十、window.navigator对象
+  参考：
+    https://blog.csdn.net/jp571534020/article/details/46738511?utm_medium=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromMachineLearnPai2-1.control&depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromMachineLearnPai2-1.control
+  属性：
+    navigator.appName       浏览器名，统一为NetScape，致敬网景公司
+    navigator.appVersion    浏览器版本
+    navigator.userAgent     保存了浏览器版本及型号信息
+    navigator.platform      浏览器所在操作系统，Win32 ios android
+
+    navigator.cookieEnabled 浏览器是否启用cookie
+    navigator.geolocation   返回地理定位信息
+    navigator.javaEnabled() 是否支持java
+    navigator.language      浏览器首选自然语言
+    navigator.languages     浏览器的所有语言
+    navigator.onLine        是否连接互联网
+    navigator.plugins       浏览器插件集合
+
+    IE支持（其他不支持）：
+    navigator.userLanguage  操作系统使用的自然语言
+    navigator.systemLanguage系统语言
+
+
+十一、事件监听
+  window.onload           页面加载完成后执行
+  id_name.onclick         点击后执行
+  window.onscroll         滚动条滚动后执行
+  window.onresize         窗体大小改变后执行
+
+
+十二、滚动条位置
+  获取上面隐藏高度：
+    window.document.documentElement.scrollTop     有DOCTYPE标签生效
+    window.document.body.scrollTop                无DOCTYPE标签生效
+    兼容写法：
+      var scrollTop = document.documentElement.scrollTop || document.body.scrollTop
+
+  获取左边隐藏宽度：
+    window.document.documentElement.scrollLeft    有DOCTYPE标签生效
+    window.document.body.scrollLeft               无DOCTYPE标签生效
+    兼容写法：
+      var scrollLeft = document.documentElement.scrollLeft || document.body.scrollLeft
+  
+  设置滚动条位置：
+    window.scrollTo(x,y)                  同时横纵两个方向的位置
+    window.scrollTo({ top:x, left:y })    可单独设置
+
+
+
+DOM
+  操作页面元素及其属性样式等。
+
+十三、获取页面元素
+  直接获取：
+    id属性
+  属性获取：
+    html === document.documentElement
+    head === document.head
+    body === document.body
+  方法获取：
+    document.getElementById('id')             返回标签对象
+    document.getElementByTagName('Tag')       以下都返回伪数组（存储了多个标签对象）
+    document.getElementByClassName('Class')
+    document.getElementByName('name')
+
+    document.querySelector('selector')        返回第一个满足选择器的标签
+    document.querySelectorAll('selector')     返回满足选择器的所有标签的数组
+
+
+十四、操作元素属性
+  原生属性：
+    标签.属性名
+  自定义属性：
+    设置：标签.setAttribute('属性名', '属性值')
+    获取：标签.getAttribute('属性名')           返回属性值（字符串型返回）
+    清除：标签.removeAttribute('属性名')
+  H5自定义属性：
+    data-xxx 映射为 xxx属性
+    每个标签都有dataset属性，包含了所有H5自定义属性
+    设置：标签.dataset.属性名 = '值'
+    获取：标签.dataset.属性名
+    清除：delete 标签.dataset.属性名
+
+
+十五、操作元素类名
+  按原生属性方式：
+    设置：标签.className = '值'
+    获取：标签.className
+    清除：需要手动编写，麻烦（涉及字符串切割 遍历等）
+  
+  按H5提供的操作：
+    每个标签都有classList属性，包含标签上设置的所有类名
+    添加：标签.classList.add('类名')
+    获取：标签.classList[索引]
+    清除：标签.classList.remove('类名')
+
+    切换：标签.classList.toggle('类名')     存在则删除，不存在则添加
+
+十六、操作元素内容
+    元素内容有以下三种属性，均可通过 标签. 方式进行读写：
+    innerHTML：
+      会对解析其中的标签再进行显示。
+    innerText：
+      不进行解析，直接显示。
+    value：
+      表单元素的value属性值。
+
+    

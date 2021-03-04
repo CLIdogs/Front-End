@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>触摸事件</title>
+  <style>
+    div {
+      height: 200px;
+      width: 200px;
+      background-color: #ccc;
+    }
+  </style>
+</head>
+<!-- 触摸事件：
+      touchstart      触摸开始
+      touchmove       触摸移动
+      touchend        触摸结束
+    
+      注意：
+        只能在移动端使用
+-->
+<body>
+  <div></div>
+  <script>
+    var div = document.querySelector('div')
+    var p = document.querySelector('p')
+    
+    div.ontouchstart = function() {
+      console.log('触摸开始')
+    }
+    div.ontouchmove = function() {
+      console.log('触摸移动')
+    }
+    div.ontouchend = function() {
+      console.log('触摸结束')
+    }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>利用过渡实现图标切换的过渡效果</title>
+  <style>
+    @font-face {
+      font-family: 'icomoon';
+      src: url('fonts/icomoon.eot?35tjim');
+      src: url('fonts/icomoon.eot?35tjim#iefix') format('embedded-opentype'),
+        url('fonts/icomoon.ttf?35tjim') format('truetype'),
+        url('fonts/icomoon.woff?35tjim') format('woff'),
+        url('fonts/icomoon.svg?35tjim#icomoon') format('svg');
+      font-weight: normal;
+      font-style: normal;
+      font-display: block;
+    }
+
+    .outter_box {
+      overflow: hidden;
+      width: 30px;
+      height: 30px;
+      margin: 30px auto;
+    }
+
+    .outter_box .inner_box {
+      width: 60px;
+      height: 30px;
+      font-family: "icomoon";
+      font-size: 30px;
+    }
+
+    .outter_box .inner_box:hover {
+      margin-left: -30px;
+      transition: margin-left .5s;
+    }
+  </style>
+</head>
+
+<body>
+</body>
+<div class="outter_box">
+  <div class="inner_box"></div>
+</div>
+
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JS操作三种标签属性</title>
+</head>
+
+<body>
+  <!-- 
+      1，原生属性：
+          如id class style src type name href border source ...(style内的叫做样式)
+          方法：
+            标签.属性名   对于类名不同：标签.className
+        
+      2，自定义属性：自己瞎造的
+          aaa bbb ...
+          方法：
+            设置：标签.setAttribute('自定义属性名', '属性值')
+            获取：标签.getAttribute('自定义属性名')               返回字符串型
+            清除：标签.removeAttribute('自定义属性名')
+      3，H5自定义属性：data-xxx方式书写（实际上，自定义属性为xxx）
+          每个标签都有一个dataset属性，包含了所有H5自定义属性
+          如：data-xxx  表示  属性xxx
+          方法：
+            获取：元素.dataset.属性名
+            设置：元素.dataset.属性名 = '值'
+            清除：delete 元素.dataset.属性名
+
+  -->
+
+  <div id='box' class='bx1 bx2' style="width:100px;  height: 100px; background-color: pink;"></div>
+  <input type="text">
+  <div id='b'></div>
+
+
+  <script>
+    // 1，对于原生属性：标签.属性名（除class，class是js中的关键字） 获取类名：标签.classname
+    var div = document.querySelector('div');
+    console.log(div.id, div.className);     // 获取div标签的id 和 类名
+    div.id = 'box1';                        // 修改标签的id属性
+    console.log(div.id);
+    var inp = document.querySelector('input')
+    inp.placeholder = "请输入用户名"
+    inp.type = 'password'
+
+    // 2，对于自定义属性
+    var div = document.querySelector('div#b')
+    // div.setAttribute('aaa', 'world');       // 设置属性值（不存在该属性则为添加）
+    // console.log(div)
+    // console.log(div.getAttribute('aaa'))    // 获取属性值
+    // div.removeAttribute('aaa')           // 清除属性
+    // console.log(div)
+
+    // 3，H5自定义属性，直接在dataset中操作
+    div.dataset.aaa = 'hello'     // 设置
+    console.log(div)
+    console.log(div.dataset.aaa)  // 获取
+    delete div.dataset.aaa;       // 清除H5自定义属性
+
+
+  </script>
+</body>
+
+</html>

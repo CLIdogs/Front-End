@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>操作元素样式</title>
+  <style>
+    #box {
+      background-color: pink;
+      width: 50px;
+      height: 50px;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 样式：
+      获取元素样式：
+        对于行内样式：
+          标签.style.样式      一个包含所有可设置样式的对象
+          标签.style['样式']
+          对于非行内样式：
+          window.getComputedStyle('标签')方法     返回一个包含所有可设置样式的对象，可通过.或[]访问其中的样式（点时需去除中划线，转为驼峰写法）
+          标签.currentStyle属性                   适用于IE低版本
+          
+          封装方法来实现兼容：
+          function getStyle(ele,style) {
+            //标准浏览器
+            if('getComputedStyle' in window) {
+              return window.getComputedStyle(ele)[style]
+            }
+            //IE低版本
+            else {
+              return ele.currentStyle[style]
+            }
+          }
+          
+      设置元素样式：
+      只能设置行内样式，内嵌和外链样式必须修改文件。
+          标签.style.样式 = '值'
+          标签.style['样式'] = '值'
+  -->
+  <div style="background-color: red; width: 100px; height: 100px;"></div>
+  <div id="box"></div>
+  <script>
+    var first = document.querySelector('div')
+    var second = document.querySelector('div#box')
+    // 行内样式
+    console.log(first.style.backgroundColor)
+    first.style.backgroundColor = 'black'
+    console.log(first.style.backgroundColor)
+    // 内嵌样式
+    console.log(window.getComputedStyle(second).backgroundColor)
+    console.log(window.getComputedStyle(second)['background-color'])
+    console.log(window.getComputedStyle(first).backgroundColor) // 对行内样式也生效
+    // console.log(second.currentStyle.backgroundColor)   只在低版本IE中生效
+  </script>
+</body>
+
+</html>

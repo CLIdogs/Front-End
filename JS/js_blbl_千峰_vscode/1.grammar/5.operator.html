@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>运算符</title>
+</head>
+<body>
+    <!-- 运算符：
+            数学
+            赋值
+            比较
+            逻辑
+            自增自减
+      -->
+    <script>
+        // 数学：+ - * / % **
+        console.log(5%3, 2**3)  // 求模、取幂
+
+        // 赋值：= += -= *= /= %= **=
+        var a = 3
+        a **= 4
+        console.log(a)
+
+        // 比较：> < >= <= == !=    === !==
+        console.log(1=='1', 1!=true, 10===10, 10!=='10')    // == != 只比较值(不区分类型)；=== !== 比较变量值和类型
+
+        // 逻辑：|| && !
+        console.log(false&&true, false||true, !true)
+        
+        // 自增自减：++ --
+        var c = 3
+        console.log(c++,++c,c--,--c)
+
+
+    </script>
+</body>
+</html>

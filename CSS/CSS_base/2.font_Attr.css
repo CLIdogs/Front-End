@@ -1,0 +1,19 @@
+/* font属性相关：字体、字号、粗细、样式 */
+div {
+  width: 100px;
+  height: 100px;
+  background-color: pink;
+
+  /* 字体 */
+  font-family: 'Courier New', Courier, monospace;
+  /* 谷歌字号默认16px */
+  font-size: 20px;
+  /* blod=700 normal=400 数字范围：100-900 */
+  font-weight: 700;
+  /* normal正常样式 italic斜体样式 */
+  font-style: italic;
+
+  /* font的复合写法，顺序：样式 粗细 字号/行高 字体 （可部分省略，但必须要有 字号和字体）*/
+  /* font: italic 700 20px/100px "'Courier New', Courier, monospace" ; */
+
+}

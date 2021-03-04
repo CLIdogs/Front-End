@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js函数如何与html中的标签进行关联</title>
+</head>
+
+<body>
+    <!-- 一个简易计算器，实现：+ - * / -->
+    <div>
+        <input type="text" id="a1" placeholder="操作数1">
+        <select name="" id="mode">
+            <option value="+" selected>+</option>
+            <option value="-">-</option>
+            <option value="*">*</option>
+            <option value="/">/</option>
+        </select>
+        <input type="text" id="a2" placeholder="操作数2">
+        <button id="work"> = </button>
+        <input type="text" id="res" disabled placeholder="计算结果">
+    </div>
+
+
+    <script> //加载完页面就会执行
+        work.onclick = function () {
+            // 注意：页面输入的数据全部都是String类型的
+            var first = a1.value - 0
+            var second = a2.value - 0
+            var m = mode.value
+
+            var result
+            switch (m) {
+                case '+': result = first + second; break;
+                case "-": result = first - second; break;
+                case "*": result = first * second; break;
+                case "/": result = first / second; break;
+            }
+            res.value = result
+
+        }
+
+        // 九九乘法表
+        for(var i = 1; i <= 9; i++) {
+            for(var j = 1; j <= i; j++) {
+                document.write(i+"*"+j+"="+i*j+" ")
+            }
+            document.write("<br>")
+        }
+    </script>
+</body>
+
+</html>

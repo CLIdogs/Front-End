@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js函数的定义和调用</title>
+</head>
+<script src="./call_test.js"></script> <!-- 引入外部js文件-->
+
+<body>
+    <!-- js函数：
+            声明式函数——function关键字：
+                function 函数名() {}
+            赋值式函数
+                var 函数名 = function(){}
+
+            调用——不同定义方式的函数调用方法相同
+                函数名()
+            
+            函数参数：不需要用var定义形参，每个函数都默认自带aguments变量，表示所有函数实参的集合
+                函数名(n) {}
+                
+                对于arguments变量的属性：
+                    1，length：实参个数，可以用arguments.length设置（但一般不进行设置）
+                    2，以用 arguments[i] 获取或设置（有则修改、无则添加）对应的实参值
+            函数返回值 —— return关键字
+                return 变量
+
+
+
+        注意：
+            1，两种声明方式的函数调用时的区别：
+                声明式函数 —— 可以在声明前调用
+                赋值式函数 —— 则不可
+
+            2，函数名、函数名()意义不同
+                函数名：    表示一个变量
+                函数名()：  表示执行这个函数
+
+            3，对于函数参数，形参和实参个数不匹配仍不报错
+                形 > 实     未接收值的形参为undefined
+                实 > 形     不报错，只是一个后面实参是多余的
+
+            4，return关键字
+                也可以用来结束函数执行（后面的代码不再执行）
+
+            5，js函数支持递归调用
+
+            6，js函数常常结合标签（标签来触发函数）
+                元素的id名可直接当作一个变量使用，该变量代表该标签。如有两种方法调用：
+                    匿名函数：id名.onclick = function () {}
+                    具名函数：id名.onclick = 函数名     无括号，表示调用指定的函数地址
+     -->
+    <div id="box">click here</div>
+
+    <script>
+
+        fn1()           // 声明前调用
+
+        // 两种声明方式
+        function fn1() {
+            console.log("fn1: 声明式函数中的逻辑代码")
+        }
+        var fn2 = function () {
+            console.log("fn2: 赋值式函数中的逻辑代码")
+        }
+
+        function fn3(num) {        // 判断是否是一个质数
+            var flag = true
+            for (var i = 2; i < num / 2; i++) {
+                if (!(num % i)) {
+                    flag = false
+                    break
+                }
+            }
+            console.log(flag)
+
+        }
+
+        function sum() {    // 可变参数，输出到控制台
+            var sum = 0;
+            for (var i = 0; i < arguments.length; i++) {
+                sum += arguments[i];
+            }
+            // console.log(sum)    // document.write()输出到页面，alert()输出到弹窗
+            return sum
+        }
+
+        // 调用
+        fn1()
+        fn2()           // 不可在声明前调用（否则报错）
+        console.log(fn1)
+        fn3(11)
+        var res = sum(1, 2, 3, 4, 5, 6, 7, 8, 9)  // 可变参数
+
+        console.log(res)    // 接收结果，进行其他操作document.write(res)、alert(res)
+
+        for (var i = 10; i < 30; i++) {
+            if (iszs(i))         // 调用外部js文件中的函数
+                console.log(i)
+        }
+        console.log(jc(5))
+
+        // 函数结合标签使用的两种方式（指定标签的id名）
+        box.onclick = function() {alert("点击成功")}
+        // box.onclick = fn1        //会覆盖对前面的点击事件
+
+
+    </script>
+</body>
+
+</html>

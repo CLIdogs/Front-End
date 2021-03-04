@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>带有添加和删除功能的表格</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    form {
+      width: 300px;
+      padding: 20px;
+      margin: 10px;
+      border: 10px solid skyblue;
+    }
+
+    form>button {
+      width: 100%;
+      height: 30px;
+      margin: 10px 0;
+    }
+
+    table {
+      width: 300px;
+      margin: 30px;
+      border: 2px solid pink;
+      text-align: center;
+    }
+
+    table>tbody>tr:nth-child(odd) {
+      background-color: #ccc;
+    }
+
+    table>tbody>tr:nth-child(even) {
+      background-color: orange;
+    }
+  </style>
+</head>
+
+<body>
+  <form action="action">
+    姓名：<input type="text" class="username"><br>
+    年龄：<input type="text" class="userage"><br>
+    性别：<input type="text" class="usergender"><br>
+    <button type="button" class="add">添加到</button>
+  </form>
+
+  <table cellspacing="0">
+    <thread>
+      <tr>
+        <th>姓名</th>
+        <th>年龄</th>
+        <th>性别</th>
+        <th>操作</th>
+      </tr>
+    </thread>
+    <tbody>
+      <tr>
+        <td>三</td>
+        <td>20</td>
+        <td>男</td>
+        <td>
+          <button class="del">删除</button>
+        </td>
+      </tr>
+      <tr>
+        <td>四</td>
+        <td>18</td>
+        <td>男</td>
+        <td>
+          <button class="del">删除</button>
+        </td>
+      </tr>
+      <tr>
+        <td>五</td>
+        <td>19</td>
+        <td>女</td>
+        <td>
+          <button class="del">删除</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <script>
+    /* 
+    业务逻辑：
+      点击添加按钮后在表格后添加对应的一行，删除同理
+    代码实现：
+      获取元素：
+        添加按钮
+        删除按钮
+        三个文本框
+        tbody标签
+      绑定点击事件：
+        获取内容，验证是否为空，创建元素，插入元素
+    */
+    var username = document.querySelector('.username')
+    var userage = document.querySelector('.userage')
+    var usergender = document.querySelector('.usergender')
+    var add = document.querySelector('.add')
+    var del = document.querySelectorAll('.del')
+    var tbody = document.querySelector('tbody')
+
+    add.onclick = function () {
+      // 获取内容
+      var name = username.value
+      var age = userage.value
+      var gender = usergender.value
+      // 验证是否为空
+      if (name === '' || age === '' || gender === '') {
+        alert('信息不完整')
+        return
+      }
+      // 创建节点
+      var tr = document.createElement('tr')
+      var td1 = document.createElement('td')
+      var td2 = document.createElement('td')
+      var td3 = document.createElement('td')
+      var td4 = document.createElement('td')
+      var btn = document.createElement('button')
+      td1.innerHTML = name
+      td2.innerHTML = age
+      td3.innerHTML = gender
+      btn.innerHTML = '删除'
+      // 删除按钮绑定事件
+      btn.onclick = function(){}
+      // 插入节点
+      tr.appendChild(td1)
+      tr.appendChild(td2)
+      tr.appendChild(td3)
+      td4.appendChild(btn)
+      tr.appendChild(td4)
+      console.log(name, age, gender)
+      console.log(tr)
+      // 插入到tbody后面
+      tbody.appendChild(tr)
+      // 表单置空
+      username.value = ''
+      userage.value = ''
+      usergender.value = ''
+      
+    }
+    del.forEach(function(item) {
+      item.onclick = function() {
+        var tr = this.parentElement.parentElement
+        tr.remove()
+      }
+    })
+
+  </script>
+</body>
+
+</html>

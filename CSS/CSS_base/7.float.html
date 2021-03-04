@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>浮动 —— 页面布局核心之一</title>
+  <style>
+    .box1 {
+      width: 450px;
+      /* 通过清除浮动来自适应父盒子宽度 */
+      /* height: 100px; */
+      background-color: #ccc;
+      padding: 5px;
+      /* 2，给父盒子添加overflow属性(auto或hidden)来清除浮动 */
+      overflow: hidden;
+    }
+
+    /* 3，after伪元素法清除浮动，IE67专有 */
+    .clearfix:after {
+      content: "";
+      display: block;
+      height: 0;
+      clear: both;
+      visibility: hidden;
+    }
+
+    .clearfix {
+      *zoom: 1;
+    }
+
+    /* 4，双伪元素法清除浮动 */
+    .clearfix:before,
+    .clearfix:after {
+      content: "";
+      display: table;
+    }
+
+    .clearfix:after {
+      clear: both;
+    }
+
+    .clearfix {
+      *zoom: 1;
+    }
+
+    .box1>.first,
+    .box1>.second,
+    .box1>.third {
+      width: 150px;
+      height: 100px;
+      background-color: pink;
+      float: left;
+    }
+
+    .box2 {
+      width: 200px;
+      height: 200px;
+      background-color: skyblue;
+    }
+
+    /* 兼容IE67 */
+    .clear {
+      clear: both;
+    }
+  </style>
+</head>
+<!--
+    背景：
+      元素默认是标准流布局。
+
+    浮动方式：
+        left right none
+
+    浮动的特点：
+      让多个块级元素横向排列，之间没有间隙，脱离标准流（排不下则另起一行再排）
+      不保留原位置（父级元素高度可能为0）
+      浮动后具有行内块特性：可设置宽高等
+
+    清除浮动：
+      clear: both;    还有 left right
+      因为不知道浮动的子盒子个数（知道则可以计算需要的高度），所以不方便给父盒子设置高度
+      作用：
+        清除浮动带来的影响（会影响父盒子的高）：父级会根据浮动的子盒子自动检测高度
+      注意：
+        隔墙法清除浮动插入的必须是【块级】盒子（伪元素选择器的方法本质上还是隔墙法）
+
+-->
+
+<body>
+  <div class="box1 clearfix">
+    <div class="first">1</div>
+    <div class="second">2</div>
+    <div class="third">3</div>
+    <!-- 1，隔墙法清除浮动（必须是块级空盒子），W3C推荐 -->
+    <!-- <div class="clear"></div> -->
+    <!-- 2， -->
+  </div>
+  <!-- 会被浮动的元素遮挡，解决方法：浮动元素放入标准流的元素内 -->
+  <div class="box2">box2</div>
+
+</body>
+
+</html>

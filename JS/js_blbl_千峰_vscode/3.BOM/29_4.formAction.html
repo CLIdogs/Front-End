@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>表单事件</title>
+  <style>
+    div {
+      width: 200px;
+      height: 200px;
+      background-color: #ccc;
+    }
+  </style>
+</head>
+<!-- 表单事件：
+      绑定表单元素：
+        change  表单状态改变（失焦和聚焦时状态不同）
+        input   表单内部输入内容就会触发
+        focus   表单聚焦
+        blur    表单失焦
+      绑定form元素：
+        submit    表单提交
+        reset     表单重置
+        
+      注意：针对 表单元素 和 form标签
+-->
+
+<body>
+  <div draggable="true">用于拖拽事件</div>
+  <form action="">
+    <input type="text">
+    <button>提交</button>
+    <!-- <input type="reset"> -->
+    <button type="reset">重置</button>
+  </form>
+
+
+  <script>
+    var inp = document.querySelector('input')
+    var form = document.querySelector('form')
+    var div = document.querySelector('div')
+    inp.onchange = function () {
+      console.log('表单发生变化了')
+    }
+    inp.oninput = function () {
+      console.log('表单内部输入了内容')
+    }
+    inp.onfocus = function () {
+      console.log('表单聚焦')
+    }
+    inp.onblur = function () {
+      console.log('表单失焦')
+    }
+    form.onsubmit = function () {
+      console.log('表单提交')
+      return false
+    }
+    form.onreset = function () {
+      console.log('表单重置')
+    }
+  </script>
+</body>
+
+</html>

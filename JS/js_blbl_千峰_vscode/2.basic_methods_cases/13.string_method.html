@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>字符串的几个常用方法</title>
+</head>
+<body>
+    <!-- 所有字符串处理函数都不会改变原字符串，只是返回了一个新字符串 -->
+    <!-- 常用的几个函数：
+            查找：
+                根据索引：
+                charAt(index)    返回指定索引位置的字符，不存在该索引则为空
+                charCodeAt(index) 返回编码（UTF-8）
+
+                根据子串：
+                indexOf(str, start) 查询到则返回对应索引，否则返回 -1，start表示从索引start开始查，省略则默认从头开始
+                lastIndexOf(str, start) 同理，start开始，从后向前查找
+
+            子串是否存在：
+                includes(substr, start)    返回布尔值，从start开始查找，存在返回true，否则返回false
+                search(substr)      同理，存在返回索引，不存在返回 -1，区别：只有一个参数，可以放正则，上面的不可以使用正则
+                match(str)          常用于正则，返回一个数组（记录了找到的全部字符串）
+
+            子串：
+                substr(start, count) 返回start开始的count个字符组成的子串
+                substring(start, end) 返回索引[start,end)的子串
+
+            大小写转换：
+                toLowerCase()   全部英文字母转为小写（非英文字母则不变）
+                toUpperCase()   转为大写
+
+            替换子串：
+                replace(src_str, des_str)   把字符串中指定的子串替换为目标子串（只能替换第一个），也可以放正则表达式
+
+            拼接字符串（不常用，可直接用+号拼接）：
+                concat(str) 返回拼接好后的字符串
+            
+            截取字符串：
+                slice(start, end)   返回[start, end)的子串，start、end可以用负数表示  
+
+            切割字符串：
+                split('切割符号', count)    按 切割符号 切割字符串，返回一个结果数组，省略切割符号则不进行切割，空串则单个单个切，count表示保留个数，count省略则全部切割
+            
+            去除空格：
+                trim()      去除字符串的首尾空格
+                trimStart() 去除首部空格（尾部保留）  别名：trimLeft()
+                trimEnd()   同理，去除尾部          别名：trimRight()
+            
+            补齐字符串：
+                padStart(des_length, fill_str)      用填充字串在字符串最前面填充，直到指定长度
+                padEnd(des_length, fill_str)        同理
+            
+            判断是否以指定字串开始/结束：
+                startswith(str)     返回布尔型，是则返回true，否则返回false
+                endsWith(str)       同理，判断结束
+                
+            给字符串加特定的标签：
+                small()             返回一个新字符串（两端加了small标签，改变字体大小）
+                big()               同理，加了big标签
+                bold()              加b标签
+                fontsize(尺寸)       加font标签，指定字体大小
+            
+    -->
+    <script>
+        var str = 'hello JS'
+        console.log(str.charAt(1), str.charCodeAt(1))           // 根据索引查
+        console.log(str.indexOf('JS'))  //根据子串查，类似的：lastIndexOf(str, start)
+
+        console.log(str.includes('l',3), str.search('z'))       // 判断是否存在指定的子串
+
+        console.log(str.match('l'))                             // 正则匹配
+
+        console.log(str.substr(1,4), str.substring(1,4))        // 获取子串
+
+        console.log(str.toLowerCase(), str.toUpperCase())       // 转大小写
+
+        console.log(str.replace('JS', 'world'))                 // 替换子串
+
+        console.log(str.concat(' world'))                       // 拼接字符串
+
+        console.log(str.slice(1, -4))                           // 截取子串
+
+        console.log("2021-2-7".split('-', 2))                   // 切割字符串
+        console.log("2021-2-7".split(2))
+        console.log("2021-2-7".split(''))
+
+        console.log(" j s".trim(), " j s ".trimStart(), " j s ".trimEnd(), " j s ".length)// 去除首尾空格
+
+        console.log(str.padStart(15,'world'), str.padEnd(15,'world'))   // 填充字符到指定长度
+
+        console.log(str.startsWith('he'), str.startsWith('ha'))         // 判断字符串是否以指定的子串开始/结束
+        console.log(str.endsWith('JS'), str.endsWith('js'))
+
+        console.log(str.small(), str.big(), str.bold(), str.fontsize(14), str.fontcolor('red'))
+
+
+        
+
+        
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS3新增的属性选择器</title>
+  <style>
+    /* CSS3新增： */
+
+    /* 含该属性的元素 */
+    input[value] {
+      color: skyblue;
+    }
+
+    /* 属性为指定值的元素 */
+    input[type="password"] {
+      color: pink;
+    }
+
+    /* 属性为指定字符开头的元素 */
+    input[value^="un"] {
+      color: red;
+    }
+
+    /* 属性为指定字符结尾的元素 */
+    input[placeholder$="age"] {
+      color: violet;
+    }
+
+    /* 属性包含指定字符的元素 */
+    input[placeholder*="na"] {
+      color: green;
+    }
+  </style>
+</head>
+
+<body>
+  <input type="text" value="username">
+  <input type="password">
+  <input type="text" value="uname">
+  <br><br>
+  <input type="text" placeholder="user_name">
+  <input type="text" placeholder="user_age">
+</body>
+
+</html>

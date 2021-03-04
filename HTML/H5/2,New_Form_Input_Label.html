@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>H5新增的input表单元素的类型</title>
+  <style>
+    /* 设置输入框中提示文本的颜色 */
+    input::placeholder {
+      color: skyblue;
+    }
+  </style>
+</head>
+<!-- 
+    新增type值：
+      用于规范输入数据的合法类型
+        email     Email类型值
+        url       URL类型
+        date      日期型
+        time      时间型
+        month     月份型
+        week      周型
+        number    数字型
+        tel       号码
+        search    搜索框
+        color     颜色选择菜单
+
+    新增属性：
+      required      必填        required
+      placeholder   提示文本     文本
+      autofocus     自动聚焦     autofocus
+      autocomplete  输入历史提示  off，默认on
+      multiple      多文件提交    multiple
+-->
+
+<body>
+  <form action="">
+    <ul>
+      <!-- 写在form表单内，才会对输入的内容验证（不合法则报错） -->
+      <li>邮箱：<input type="email" placeholder="email"></li>
+      <li>网址：<input type="url" placeholder="url"></li>
+      <li>日期：<input type="date"></li>
+      <li>时间：<input type="time"></li>
+      <li>月份：<input type="month"></li>
+      <li>周数：<input type="week"></li>
+      <li>数量：<input type="number" placeholder="number"></li>
+      <li>电话：<input type="tel" placeholder="tel"></li>
+      <li>搜索：<input type="search" placeholder="search"></li>
+      <li>颜色：<input type="color"></li>
+      <li><input type="submit" value="提交"></li>
+    </ul>
+  </form>
+</body>
+
+</html>

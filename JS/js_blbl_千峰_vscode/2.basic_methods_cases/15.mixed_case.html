@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>综合案例:用js实现静态页面</title>
+</head>
+
+<body>
+    <!-- 表格结构： -->
+    <div>
+        <!-- <table>
+            <thead>
+                <tr>
+                    <td>姓名</td>
+                    <td>性别</td>
+                    <td>年龄</td>
+                    <td>操作</td>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>3</td>
+                    <td>
+                        <button>修改</button>
+                        <button>删除</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>2</td>
+                    <td>2</td>
+                    <td>
+                        <button>修改</button>
+                        <button>删除</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table> -->
+    </div>
+    <script>
+        var userList = [
+            { name: 'jack', sex: 'man', age: '20' },
+            { name: 'Rose', sex: 'wom', age: '18' }
+        ]
+        var str = `
+        <table>
+            <thead>
+                <tr>
+                    <td>序号</td>
+                    <td>姓名</td>
+                    <td>性别</td>
+                    <td>年龄</td>
+                    <td>操作</td>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+        `
+        userList.forEach(function (item, index, userList) {
+            str += `
+                <tr>
+                    <td>${index + 1}</td>
+                    <td>${item["name"]}</td>
+                    <td>${item["sex"]}</td>
+                    <td>${item["age"]}</td>
+                    <td>
+                        <button>修改</button>
+                        <button>删除</button>
+                    </td>
+                </tr>
+                `
+        })
+        str += `
+            </tbody >
+        </table >
+        `
+
+        document.write(str)
+    </script>
+</body>
+
+</html>

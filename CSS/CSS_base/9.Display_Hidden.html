@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>实现盒子的显示、隐藏</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+
+    div {
+      width: 100px;
+      height: 100px;
+      background-color: pink;
+      margin: 30px auto;
+    }
+
+    /* visible显示，占用原位置，默认inherit，继承父盒子 */
+    .visible:hover {
+      visibility: hidden;
+    }
+
+    /* 溢出时才隐藏，默认 visible，溢出时添加滚动条：auto */
+    .overflow:hover {
+      overflow: hidden;
+    }
+
+    /* block显示，不占用原位置 */
+    .display:hover {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="visible">visibility</div>
+  <div class="overflow">this is a box which will hide if you hover mouse on it</div>
+  <div class="display">display</div>
+</body>
+
+</html>

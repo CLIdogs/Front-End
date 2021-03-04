@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>几个案例：结合utils.js、定时器、时间对象</title>
+  <script src="./22.utils.js"></script>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+
+    /* 倒计时 */
+    #box1 {
+      width: 300px;
+      height: 40px;
+      padding: 20px;
+      margin: 50px auto;
+      border: 2px solid #333;
+      line-height: 40px;
+      text-align: center;
+    }
+
+    /* 倒计时中的时间显示 */
+    #box1>p {
+      line-height: 40px;
+      display: inline-block;
+      width: 40px;
+      background-color: #ccc;
+      color: #fff;
+      font-size: 30px;
+      border-radius: 50%;
+    }
+
+    /* 弹出广告窗口 */
+    #box2 {
+      width: 100px;
+      height: 100px;
+      background-color: pink;
+      position: fixed;
+      bottom: 0;
+      right: 0;
+      border: 2px, solid, #333;
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 倒计时显示 -->
+  <div id="box1">
+    <p id="daybox">xx</p>天
+    <p id="hourbox">xx</p>时
+    <p id="minutebox">xx</p>分
+    <p id="secondbox">xx</p>秒
+  </div>
+  <!-- 弹出窗口 -->
+  <div id="box2">
+    <button id="btn">x</button>
+  </div>
+
+  <script>
+
+    // 案例一：定时弹出广告
+    var timer1 = setTimeout(function () {
+      box2.style.display = "block"
+    }, rangeRandom(1, 5) * 1000)
+    btn.onclick = function () {
+      box2.style.display = "none";
+      setTimeout(function () { box2.style.display = "block" }, 5 * 1000)
+    }
+
+    // 秒杀倒计时
+    function daojishi() {
+      var diff = getTimeDifference(new Date(), target);
+      if (diff.day < 10)
+        diff.day = '0' + diff.day;
+      if (diff.hours < 10)
+        diff.hours = '0' + diff.hours
+      if (diff.minutes < 10)
+        diff.minutes = '0' + diff.minutes
+      if (diff.seconds < 10)
+        diff.seconds = '0' + diff.seconds
+      daybox.innerText = diff.day;
+      hourbox.innerText = diff.hours;
+      minutebox.innerText = diff.minutes;
+      secondbox.innerText = diff.seconds;
+    }
+    var target = new Date(2021, 1, 8, 12, 0, 0)
+    daojishi()  // 一加载页面完就显示
+    var timer2 = setInterval(daojishi, 1000)
+
+    // 格式化输出中文时间
+    var arr = ['零', '一', '二', '三', '四', '五', '六', '七', '八', '九', '十'];
+    var time = new Date()
+    var year = time.getFullYear();
+    var month = time.getMonth();
+    var date = time.getDate();
+    var hours = time.getHours();
+    var minutes = time.getMinutes();
+    var seconds = time.getSeconds();
+    var day = time.getDay();
+
+    console.log(year, month + 1, date, hours, minutes, seconds, day)
+    var str = '';
+    // 单独格式化年份，因为年份表示不同
+    function formatYear(year) {
+      var a = Math.floor(year / 1000);
+      var b = Math.floor(year % 1000 / 100);
+      var c = Math.floor(year % 100 / 10);
+      var d = Math.floor(year % 10);
+      return arr[a] + arr[b] + arr[c] + arr[d] + '年 ';
+    }
+    // 格式化其他：月日 时分秒
+    function formatOthers(num) {
+      // 得到十位数和个位数
+      var a = parseInt(num / 10);
+      var b = num % 10;
+      if (num <= 10)
+        return arr[num];
+      if (num < 20)
+        return '十' + arr[b];
+      if (num % 10 === 0)
+        return arr[a] + '十';
+      return arr[a] + '十' + arr[b];
+    }
+    // 确定星期
+    if (day === 0) {
+      str += '周日'
+    }
+    else {
+      str += '周' + arr[day]
+    }
+    str += formatYear(year);
+    str += formatOthers(month) + '月 ';
+    str += formatOthers(date) + '日 ';
+    str += formatOthers(hours) + '时 ';
+    str += formatOthers(minutes) + '分 ';
+    str += formatOthers(seconds) + '秒 ';
+
+
+    console.log(str)
+
+  </script>
+</body>
+
+</html>

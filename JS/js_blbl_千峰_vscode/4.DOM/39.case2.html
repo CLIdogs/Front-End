@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>动态创建表格 + 文档碎片</title>
+  <!-- 文档碎片：
+        可以用JS创建一个文档碎片节点（筐）来承载节点
+        筐向页面添加时，筐是不会进入页面的（相当于倒入筐中内容到页面）
+  -->
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+
+    table {
+      width: 300px;
+      margin: 10px 0;
+      border: 2px solid pink;
+      text-align: center;
+    }
+
+    table>tbody>tr:nth-child(odd) {
+      background-color: #ccc;
+    }
+
+    table>tbody>tr:nth-child(even) {
+      background-color: orange;
+    }
+  </style>
+</head>
+
+<body>
+  <table cellspacing="0">
+    <thead>
+      <tr>
+        <td>姓名</td>
+        <td>年龄</td>
+        <td>性别</td>
+      </tr>
+    <tbody>
+      <!-- 等待填充记录 -->
+    </tbody>
+    </thead>
+  </table>
+
+
+  <script>
+    /*动态创建表格：
+        遍历数组
+        创建tr
+        填充tr里的内容
+    */
+    var userList = [
+      { name: 'Jack', age: 18, gender: '男' },
+      { name: 'Rose', age: 20, gender: '女' },
+      { name: 'Tom', age: 22, gender: '男' }
+    ]
+
+    // 获取元素
+    var tbody = document.querySelector('tbody')
+
+    // 方法一：遍历数组，每个数组元素直接插入到页面
+    // userList.forEach(function (item) {
+    //   var tr = document.createElement('tr')
+    //   tr.innerHTML = `
+    //     <td>${item.name}</td>
+    //     <td>${item.age}</td>
+    //     <td>${item.gender}</td>
+    //   `
+    //   tbody.appendChild(tr)     // 如果过多操作DOM，浪费性能，解决方法：先放在div中在插入到页面中
+    // })
+
+    // 方法二（推荐）：遍历数组，利用文档碎片节点将数组元素一次性插入到页面中
+    var frg = document.createDocumentFragment()
+
+    userList.forEach(function (item) {
+      var tr = document.createElement('tr')
+      tr.innerHTML = `
+        <td>${item.name}</td>
+        <td>${item.age}</td>
+        <td>${item.gender}</td>
+      `
+      frg.appendChild(tr)
+    })
+    tbody.appendChild(frg)
+  </script>
+</body>
+
+</html>

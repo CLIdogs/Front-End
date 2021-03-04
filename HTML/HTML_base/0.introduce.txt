@@ -1,0 +1,91 @@
+note source: bilibili pink
+常用浏览器：
+  IE Edge firefox Chrome Safari Opera
+
+浏览器内核：
+  Trident   IE 360 百度
+  Geoko     火狐
+  Webkit    Safari
+  Blink     Chrome Opera 
+
+Web标准
+  W3C（万维网联盟）等标准化组织制订的标准
+  查阅文档：
+    W3C中文官网：https://www.w3school.com/
+    MDN官网：   https://developer.mozilla.org/zh-CN/
+
+前端三剑客：
+  HTML  结构
+  CSS   样式
+  JS    行为
+
+标签：
+  html  根标签
+      <!DOCTYPE html> 文档类型的声明：表示 html5 方式显示
+      <html lang="en">  文档显示语言，中文zh-CN
+
+  head  头部标签
+    <meta charset="UTF-8" />            文档字符编码
+    <meta name="" content=""/>          name作为搜索引擎的搜索关键字，值有：viewport keyword description
+    <title>标题</title>                  网页标题
+    <meta http-equiv="" content=""/>    和移动端开发有关
+  body  主体标签
+
+
+语义标签：
+  双标签：
+    <header>        页面头部
+    <main>          页面主体区域
+    <footer>        页面尾部
+
+    <article>       描述性内容的独立显示区域
+    <section>       结构功能相同的相似区域
+    <aside>         描述页面中的小挂件、小部件
+    <small>         声明类文本，字号小
+    <time>          描述时间
+    <abbr title=""> 缩写
+    <code>          代码区域
+    <cite>          简要引用内容来源
+    <blockquote>    大块引用内容来源
+    <address>       描述地址
+    <a href="" target="">    链接(地址，打开方式)
+
+    <p>             段落，空格类字符均按一个空格处理
+    <pre>           原样输出，包含enter tab等
+
+    <sup>           上标
+    <sub>           下标
+    <del>           删除内容，中划线  <s>
+    <ins>           下划线          <u>
+    <em>            倾斜            <i>
+    <strong>        加粗            <b>
+    <mark>          强调文本
+
+  单标签：
+    <hr>          分隔线
+
+无语义标签：
+  <div>
+  <span>
+
+
+注释标签：
+  <!-- 注释内容 -->
+
+特殊字符：
+  空格        &nbsp;
+  <          &lt;
+  >          &gt;
+  &          &amp;
+
+  正负号      &plusmn;
+  乘号        &times;
+  除号        &divide;
+  平方号      &sup2;
+  立方号      &sup3;
+
+  ￥         &yen;
+  版权符      &copy;
+  注册商标符   &reg;
+  摄氏度      &deg;
+  

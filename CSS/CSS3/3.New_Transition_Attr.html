@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS3颠覆性特征 —— 过渡属性</title>
+  <style>
+    div {
+      width: 200px;
+      height: 100px;
+      background-color: pink;
+      margin: 30px;
+    }
+
+    /* 注意：
+          可过渡的属性有：宽高、背景颜色、内外边距
+          后面两个参数可省略（运动方式、开始时间），默认ease 0s
+     */
+
+    /* 0s后，宽度慢慢减速变化，0.3s完成 */
+    .box1:hover {
+      width: 300px;
+      transition: width 0.3s ease 0s;
+    }
+
+    /* 宽度0.2s完成，高度0.5s完成 */
+    .box2:hover {
+      width: 300px;
+      height: 200px;
+      transition: width 0.2s, height 0.5s linear 0s;
+    }
+
+    /* 宽度0.3s完成，背景颜色1s完成 */
+    .box3:hover {
+      width: 300px;
+      background-color: skyblue;
+      transition: width 0.3s ease-out 0s, background-color 1s;
+    }
+
+    /* 高度0.3s完成，背景颜色1s完成 */
+    .box4:hover {
+      height: 200px;
+      background-color: skyblue;
+      transition: height 0.3s, background-color 1s;
+    }
+
+    /* all表示所有可过渡的属性规定相同时间内完成 */
+    .box5:hover {
+      width: 300px;
+      height: 300px;
+      background-color: skyblue;
+      transition: all 1s;
+    }
+  </style>
+</head>
+<!-- 
+  transition 属性经常搭配 :hover 使用
+
+  transition: 过渡属性 花费时间 运动曲线 何时开始
+      要过渡的属性：宽高、背景颜色、内外边距等（所有属性都过渡写all即可）
+      花费时间：单位秒
+      运动曲线：默认ease，可省略
+      何时开始：延迟触发时间，默认0秒，可省略
+
+  作用：
+      不使用flash、JS，就能实现动画效果
+  注意：
+      IE9以下版本不支持，但不会影响页面布局
+-->
+
+<body>
+  <div class="box1">width变化</div>
+  <div class="box2">width height变化</div>
+  <div class="box3">width background-color变化</div>
+  <div class="box4">height background-color变化</div>
+  <div class="box5">all，宽高、背景颜色全部变化</div>
+</body>
+
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>有关DOM对标签元素的操作</title>
+</head>
+
+<body>
+  <button id="btn">按钮</button>
+
+  <p id="a"></p>
+
+  <div id="box">
+    <p id="a"></p>
+  </div>
+
+  <ul>
+    <li class="box1">box1</li>
+    <li class="box1">box2</li>
+    <li class="box"></li>
+  </ul>
+
+  <input type="text" name="username">
+  <div name="username"></div>
+
+  <!-- 获取页面元素：
+      方法一：
+        通过元素id（JS把id作为变量来代表这个元素）
+
+      方法二：
+        非常规标签：html head body
+          document.documentElement    获取html标签
+          document.head               获取head标签
+          document.body               获取body标签
+        常规标签（都可以指定查找范围）：
+          document.getElementById('id')   通过id查找元素，可指定查找范围（当前为在document内）
+            返回值：存在该id的元素则返回这个元素的对象，否则返回 null
+          document.getElementsByTagName('tag') 通过标签名来查找元素，同样可以指定查找范围
+            返回值：返回存储所有该类标签的一个伪数组（不能使用数组方法），不存在则返回一个空的伪数组
+          document.getElementsByClassName('class')  通过类名来获取一类元素
+            返回值：同理返回一个伪数组
+          document.getElementsByName('name')    通过元素name属性的值获取元素
+            返回值：同理返回一个伪数组
+
+          document.querySelector('selector')      通过选择器来获取元素(css中的选择器都可以写)
+            返回值：存在这样的元素则返回第一个元素对象，不存在则返回null
+          document.querySelectorAll('selector')   同理，通过选择器选择元素，
+            返回值：返回一个伪数组，不存在则返回空的伪数组
+          
+
+          
+          
+
+
+  -->
+  <script>
+    // id作为一个变量
+    console.log(btn)                      // 很少用，输出：<button id="btn">按钮</button>
+
+    // 非常规标签（html head body）的获取
+    console.log(document.documentElement) // 输出html标签的全部内容
+    console.log(document.head)            // 输出head标签的全部内容
+    console.log(window.document.body)     // 输出body标签的全部内容
+
+    // 通过 getElementById('id') 获取
+    var btn = document.getElementById('btn')        // 在整个document页面范围找对应id的元素
+    console.log(typeof (btn), btn)          // 返回Object型，输出和当作变量输出一样
+
+    var p1 = document.getElementById('a')
+    console.log('外面的a', p1)
+
+    var div = document.getElementById('box')  // 指定id的查找范围
+    // var p2 = div.getElementById('a');
+    // console.log('外面的a', p2)
+
+    // 通过 getElementsByTagName('Tag') 获取
+    var box = document.getElementsByTagName('p')
+    console.log(box)              // 输出一个伪数组
+    console.log(box[0], box[1])   // 要获得伪数组中某个元素，要么遍历，要么索引
+
+    var div = document.getElementsByTagName('div')[0]
+    var p3 = div.getElementsByTagName('p')      // 指定查找范围为div内
+    console.log(p3)
+
+    // 通过 getElementsByClassName('class') 获取
+    var box = document.getElementsByClassName('box');
+    console.log(box)
+
+    // 通过 getElementsByName('name') 获取
+    var inp = document.getElementsByName('username')
+    console.log(inp)
+
+    // 以下两个方法的缺点：IE低版本不支持
+    // 通过 querySelector('selector') 获取
+    var res = document.querySelector('ul>li.box1:nth-child(even)')    // 选择ul下的li标签 且类名有box1 返回第偶数个li标签(奇数为odd)，按css规则来算奇偶（以1为起始）
+    console.log(res)
+    // 通过 querySelectorAll('selector') 获取
+    var box = document.querySelectorAll('ul>li')
+    console.log(box)
+
+
+  </script>
+</body>
+
+</html>

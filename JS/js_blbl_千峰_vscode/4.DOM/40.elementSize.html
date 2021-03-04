@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>元素尺寸</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+
+    div {
+      width: 200px;
+      height: 200px;
+      padding: 20px;
+      border: 20px solid #333;
+      margin: 20px;
+    }
+  </style>
+</head>
+<!-- 元素尺寸：
+      获取元素尺寸：content + padding + border
+          元素.offsetWidth
+          元素.offsetHeight
+      获取元素尺寸：content + padding
+          元素.clientWidth
+          元素.clientHeight
+      注意：
+        display: none 表示消失、不占位，所以元素尺寸都为0
+        visibility: hidden 表示消失、占位，所以元素尺寸原样显示
+
+-->
+
+<body>
+  <div></div>
+  <script>
+    var div = document.querySelector('div')
+    console.log('offsetWidth:', div.offsetWidth, 'offsetHeight:', div.offsetHeight)
+    console.log('clientWidth:', div.clientWidth, 'clientHeight:', div.clientHeight)
+  </script>
+</body>
+
+</html>

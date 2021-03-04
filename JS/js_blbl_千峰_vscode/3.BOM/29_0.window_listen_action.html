@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>window的常用监听事件 —— onload</title>
+
+  <!-- window.onload事件
+      在加载页面时，可能因为某些资源还未加载或未绑定，而造成报错
+
+      onload事件的作用就是：
+        在加载完整个页面后，再执行绑定的函数。
+
+      提示：
+        script标签建议写在body尾部（实际上，任意位置合法）
+      建议：
+        script标签要么写在body末尾
+        如果写在head中，建议逻辑代码应该写在：
+          window.onload = function () { 逻辑代码 }  表示页面加载完才会执行
+  -->
+  <script>
+    window.onload = function () {
+      btn1.onclick = function () {
+        alert('btn点击事件')
+      }
+    }
+    // 报错：变量未定义
+    // btn1.onclick = function () {
+    //   alert('btn点击事件')
+    // }
+  </script>
+
+  <!-- 设置一个大的页面，这样会出现滚动条 -->
+  <style>
+    div {
+      width: 2000px;
+      height: 2000px;
+      background-color: #ccc;
+    }
+  </style>
+</head>
+
+<body>
+  <div>
+    <button id='btn1'>btn1</button>
+  </div>
+
+
+  <!-- window.onscroll事件 
+      window.onscroll = function (){ 逻辑代码 }
+          作用：
+            只要浏览器滚动条（横、纵）发生滚动，就触发
+          应用：
+            楼层导航
+            顶部通栏
+            显示回到顶部按钮
+            渐进显示页面
+            瀑布流
+  -->
+  <script>
+    window.onscroll = function () {
+      console.log('滚动条触发')
+    }
+  </script>
+
+  <!-- window.onresize事件
+      window.onresize = function() { 逻辑代码 }
+        作用：
+          只要窗口尺寸发生改变就触发
+        应用：
+          可以结合innerWidth和innerHeight来判断横竖屏
+          响应式布局
+  -->
+  <script>
+    window.onresize = function () {
+      console.log('窗体尺寸改变')
+    }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>自己动手完成表格的分页渲染</title>
+  <script src="../2.basic_methods_cases/22.utils.js"></script>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+
+    .page li {
+      list-style: none;
+    }
+
+    .page {
+      width: 700px;
+      height: 60px;
+      border: 2px solid pink;
+      margin: 30px auto;
+      padding: 0 30px;
+    }
+
+    .page li,
+    .page span {
+      float: left;
+      line-height: 60px;
+      padding: 0 5px;
+      cursor: pointer;
+    }
+
+    span.pageSizeBox {
+      float: right;
+    }
+
+    .pageList>li.active,
+    .page>span.active {
+      color: red;
+    }
+
+    .userList>tr:nth-child(odd) {
+      background-color: #eee;
+    }
+
+    .userList>tr:nth-child(even) {
+      background-color: #ddd;
+    }
+
+    .userList>tr:hover {
+      background-color: orange;
+    }
+
+    .page>span:hover,
+    .pageList>li:hover {
+      background-color: pink;
+    }
+
+    table>tbody>tr>td>button {
+      border: none;
+      margin: 0 5px;
+    }
+
+    table>tbody>tr>td>button:hover {
+      border-bottom: 1px solid black;
+      background-color: lightcoral;
+    }
+
+    table {
+      width: 600px;
+      margin: 0 auto;
+      border: 1px solid skyblue;
+      text-align: center;
+    }
+  </style>
+</head>
+<!-- 业务逻辑：
+      准备数据
+      计算总页数
+      渲染表格
+      切换时显示对应数据条数
+-->
+
+<body>
+  <div class="page">
+    <span class="first">首页</span>
+    <span class="prev">上页</span>
+    <ul class="pageList">
+    </ul>
+    <span class="next">下页</span>
+    <span class="last">尾页</span>
+    <span class="pageSizeBox">
+      <label for="pageSize">每页记录数
+        <select name="pageSize" id="pageSize">
+          <option value="10" selected>10</option>
+          <option value="11">11</option>
+          <option value="12">12</option>
+          <option value="13">13</option>
+          <option value="14">14</option>
+          <option value="15">15</option>
+          <option value="16">16</option>
+          <option value="17">17</option>
+          <option value="18">18</option>
+          <option value="19">19</option>
+          <option value="20">20</option>
+        </select>
+      </label>
+    </span>
+  </div>
+
+  <table cellspacing="0">
+    <thead>
+      <tr>
+        <td>序号</td>
+        <td>姓名</td>
+        <td>性别</td>
+        <td>年龄</td>
+        <td>班级</td>
+        <td>操作</td>
+      </tr>
+    </thead>
+    <tbody class="userList">
+    </tbody>
+  </table>
+
+
+  <script>
+    // 1, 获取需要使用的元素
+    var page = document.querySelector('.page')
+    var pageList = document.querySelector('.pageList')
+    var first = document.querySelector('.first')
+    var prev = document.querySelector('.prev')
+    var next = document.querySelector('.next')
+    var last = document.querySelector('.last')
+    var pageSize = document.querySelector('#pageSize')
+    var userTable = document.querySelector('.userList')
+
+    // console.log(page)
+    // console.log(pageList)
+    // console.log(first)
+    // console.log(prev)
+    // console.log(next)
+    // console.log(last)
+    // console.log(pageSize)
+    // console.log(userTable)
+
+    // 2, 创建123条数据记录备用——数组
+    var userList = []
+    var lastName = '赵钱孙李周吴郑王'
+    var firstName = '一二三四五六七八九十'
+    var sex = '男女'
+    for (var i = 0; i < 123; i++) {
+      userList.push({
+        id: i + 1,
+        name: lastName[rangeRandom(0, 7)] + firstName[rangeRandom(0, 9)],
+        gender: sex[rangeRandom(0, 1)],
+        age: rangeRandom(18, 21),
+        class: rangeRandom(2018, 2022)
+      })
+    }
+    // console.log(userList)
+
+    // 3, 计算总页数 13
+    var pageCount = Math.ceil(userList.length / pageSize.value)
+    // console.log(pageCount)
+
+    // 4, 渲染分页按钮
+    function createPageList() {
+      
+      var frag = document.createDocumentFragment()    // 用于存放页码元素
+      for (var i = 0; i < pageCount; i++) {
+        var li = document.createElement('li')
+        li.innerHTML = i + 1
+        li.dataset.page = i + 1
+        // 默认显示第一页
+        if (i + 1 === 1) li.className = 'active'
+        // 给每个li添加事件，每次修改当前页都要重新渲染表格
+        li.onclick = function () {
+          var page = this.dataset.page - 0
+          currentpage = page
+          createItems()
+        }
+        frag.appendChild(li)
+      }
+      pageList.appendChild(frag)
+    }
+    createPageList()
+
+    // 5, 根据数据来渲染表格
+    // 默认当前页面为 第一页
+    var currentpage = 1
+    // 创建记录
+    function createItems() {
+      var targetData = userList.slice(pageSize.value * (currentpage - 1), pageSize.value * currentpage)
+      var str = ''
+      for (var i = 0; i < targetData.length; i++) {
+        str += `
+        <tr>
+          <td>${i + 1}</td>
+          <td>${targetData[i].name}</td>
+          <td>${targetData[i].gender}</td>
+          <td>${targetData[i].age}</td>
+          <td>${targetData[i].class}</td>
+          <td><button>修改</button><button>删除</button></td>
+          </tr>
+          `
+      }
+      // console.log(str)
+      userTable.innerHTML = str
+      bindActive()
+    }
+    createItems()
+
+    // 6, 切换页码时，重新绑定类名 active
+    function bindActive() {
+      for (var i = 0; i < pageList.children.length; i++) {
+        pageList.children[i].className = ''
+      }
+      pageList.children[currentpage - 1].className = 'active'
+      if (currentpage === 1) {
+        first.classList.add('active')
+        last.classList.remove('active')
+      }
+      else if (currentpage === pageCount) {
+        first.classList.remove('active')
+        last.classList.add('active')
+      }
+      else {
+        first.classList.remove('active')
+        last.classList.remove('active')
+      }
+    }
+    // 7, 给 页面记录数 上页 下页...绑定事件
+    pageSize.onchange = function () {
+      pageCount = Math.ceil(userList.length / pageSize.value)
+      currentpage = 1
+      pageList.innerHTML = ''
+      createPageList()
+      createItems()
+    }
+
+
+    prev.onclick = function () {
+      if (currentpage !== 1) {
+        currentpage--
+        createItems()
+      }
+    }
+    next.onclick = function () {
+      if (currentpage !== pageCount) {
+        currentpage++
+        createItems()
+      }
+    }
+    first.onclick = function () {
+      if (currentpage !== 1) {
+        currentpage = 1
+        createItems()
+      }
+    }
+    last.onclick = function () {
+      if (currentpage !== pageCount) {
+        currentpage = pageCount
+        createItems()
+      }
+    }
+
+    // 禁止选中
+    page.onselectstart = function (e) {
+      e.preventDefault();
+    }
+
+  </script>
+</body>
+
+</html>

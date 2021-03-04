@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOM节点</title>
+</head>
+<!-- DOM节点：
+
+  JS中常用的六种节点：
+    document  根节点，不属于元素
+    html      根元素节点
+    元素节点
+    文本节点   包含换行、空格
+    属性节点   依赖元素而存在
+    注释节点
+
+    文档碎片节点  相当筐，用来承载节点，向页面元素中插入时，只插入其中的内容（不含本身节点）
+
+  
+  JS对节点的操作：
+    获取节点：
+      方法：
+        document.querySelector('选择器')
+        document.getElementBy...('')
+      属性：
+        元素.childNodes           所有子节点（伪数组）
+        元素.children             所有子元素节点（伪数组）
+
+        元素.firstChild           第一个子节点（对象）
+        元素.firstElementChild    第一个子元素节点（节点）
+        元素.lastChild            最后一个子节点（对象）
+        元素.lastElementChild     最后一个子元素节点（对象）
+
+        元素.previousSibling      前一个兄弟节点
+        元素.previousElementSibing前一个兄弟元素节点
+        元素.nextSibing           后一个兄弟节点
+        元素.nextElementSibing    后一个兄弟元素节点
+
+        元素.parentNode           父节点（大部分等于父元素），html元素的父元素为document（非元素）
+        元素.parentElement        父元素节点，取不到document，因为document不是元素
+
+        元素.attributes           元素的所有属性节点（伪数组）
+
+    创建节点：
+      document.createElement('标签名')  返回一个元素节点
+      document.createAttribute('属性名')返回一个属性节点，需要 属性.value 来设置属性值
+      document.createTextNode('文本')   返回一个文本节点
+      document.createComment('注释')    返回一个注释节点
+
+      document.createDocumentFragment()   放回一个文档碎片节点
+    插入节点：
+      元素.appendChild('节点')    追加
+      元素.insertBefore('节点', '子节点')   节点插入子节点前面
+
+    删除节点：
+      删除节点（自己创建的或页面上存在的）
+      父元素.removeChild(子节点)
+      节点.remove()
+
+    替换节点：
+      父元素.replaceChild(新节点,旧节点)
+
+    复制节点：
+      节点.cloneNode(参数)    参数默认false，表示不复制子节点
+-->
+
+<body>
+  <p>div前一个兄弟节点p标签</p>
+  <div id="box" class="abc" index="hello">
+    hello
+    <p>你好</p>
+    world
+    <p>世界</p>
+    <!-- 一段注释 -->
+  </div>
+  <p>div后一个兄弟节点p标签</p>
+
+  <div class="box">
+    <!-- 用于插入节点 -->
+    <p>div内的p标签</p>
+  </div>
+
+  <div class="box1">
+    <!-- 用于删除节点 -->
+    <p>div内的用于删除p标签</p>
+  </div>
+
+  <div class="box2">
+    <!-- 用于替换节点 -->
+    <p>div内的用于替换p标签</p>
+  </div>
+
+  <div class="box3">
+    <!-- 用于复制节点 -->
+    <button>按钮</button>
+    <hr>
+
+  </div>
+
+  <script>
+    var div = document.querySelector('div')
+
+    var childs = div.childNodes
+    var childEle = div.children
+
+    console.log(childs)
+    console.log(childEle)
+
+    console.log('====== 子节点、子元素节点 ======')
+    console.log(div.firstChild)
+    console.log(div.firstElementChild)
+    console.log(div.lastChild)
+    console.log(div.lastElementChild)
+
+    console.log('======= 兄弟节点、兄弟元素节点 ======')
+    console.log(div.previousSibling)
+    console.log(div.previousElementSibling)
+    console.log(div.nextSibling)
+    console.log(div.nextElementSibling)
+
+    console.log('====== 父节点 ======')
+    console.log(div.parentNode.parentNode.parentNode)
+    // console.log(div.parentElement.parentElement)
+
+    console.log('====== 节点属性 ======')
+    console.log(div.attributes)
+
+
+    var box = document.querySelector('.box')
+    var p = document.querySelector('.box>p')
+    // 创建节点
+    var span = document.createElement('span')
+    span.innerHTML = '新的span标签'
+    var h1 = document.createElement('h1')
+    // 追加
+    h1.appendChild(span)
+    // box.appendChild(h1)
+    box.insertBefore(h1, p)
+
+    // 删除
+    var div = document.querySelector('.box1')
+    var box1 = document.querySelector('.box1>p')
+    var child = div.childNodes[1]
+    // child.remove()
+    // div.removeChild(box1)
+
+    // 替换
+    var box2 = document.querySelector('.box2')
+    var p = document.querySelector('.box2>p')
+    var span = document.createElement('span')
+    span.innerHTML = '新的span标签'
+    box2.replaceChild(span, p)
+
+    // 复制
+    var box3 = document.querySelector('.box3')
+    var clonebutton = box3.cloneNode(true)
+    box3.appendChild(clonebutton)
+
+
+
+  </script>
+</body>
+
+</html>

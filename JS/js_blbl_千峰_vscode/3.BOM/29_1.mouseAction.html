@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>鼠标事件</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+    div {
+      width: 200px;
+      height: 200px;
+      background-color: skyblue;
+    }
+  </style>
+</head>
+<!-- JS中的几大类事件：
+        鼠标事件
+        键盘事件
+        浏览器事件
+        表单事件
+        拖拽事件
+        触摸事件（移动端）
+        其他事件
+-->
+<body>
+  <!-- 鼠标事件：
+          click       左键单击
+          dblclick    左键双击
+          contextmenu 右键单击
+          mousewheel  滚轮
+          mousedown   鼠标按下（鼠标上所有按键都会触发，抬起同理）
+          mouseup     鼠标抬起
+          mousemove   鼠标移动
+          mouseover   鼠标移入
+          mouseout    鼠标移出
+          mouseenter  鼠标移入（和mouseover有区别）
+          mouseleave  鼠标移出
+  -->
+  <div></div>
+
+  <script>
+    var div = document.querySelector('div')
+    div.onclick = function() {
+      console.log('鼠标左键单击')
+    }
+    div.ondblclick = function() {
+      console.log('鼠标左键双击')
+    }
+    div.oncontextmenu = function() {
+      console.log('鼠标右键单击')
+    }
+    div.onmousewheel = function() {
+      console.log('鼠标滚轮滚动')
+    }
+    div.onmousedown = function() {
+      console.log('鼠标按下')
+    }
+    div.onmouseup = function() {
+      console.log('鼠标抬起')
+    }
+    div.onmousemove = function() {
+      console.log('鼠标移动')
+    }
+    div.onmouseover = function() {
+      console.log('鼠标移入')
+    }
+    div.onmouseout = function() {
+      console.log('鼠标移出')
+    }
+    div.onmouseenter = function() {
+      console.log('鼠标移入')
+    }
+    div.onmouseleave = function() {
+      console.log('鼠标移出')
+    }
+
+  </script>
+</body>
+</html>

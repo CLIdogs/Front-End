@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>二级菜单渲染</title>
+  <script src="./43.caseDate.js"></script>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+
+    ul,
+    ol,
+    li {
+      list-style: none;
+    }
+
+    ul {
+      width: 100%;
+      height: 60px;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    ul>li {
+      float: left;
+      line-height: 60px;
+      width: 180px;
+      cursor: pointer;
+      background-color: orange;
+      font-size: 30px;
+    }
+
+    div {
+      width: 100%;
+      height: 230px;
+      border-top: 1px solid #333;
+      border-bottom: 1px solid #333;
+    }
+
+    div>ol {
+      width: 1226px;
+      height: 100%;
+      margin: 0 auto;
+      overflow: hidden;
+    }
+
+    div>ol>li {
+      width: calc(100%/6);
+      height: 100%;
+      float: left;
+      text-align: center;
+      background-color: #ccc;
+    }
+
+    div>ol>li:hover {
+      background-color: pink;
+    }
+  </style>
+</head>
+<!-- 模拟小米的二级菜单渲染 -->
+
+<body>
+  <ul class="nav">
+  </ul>
+  <div>
+    <ol class="goodsBox">
+    </ol>
+  </div>
+  <script>
+    var nav = document.querySelector('.nav')
+    var goodsBox = document.querySelector('.goodsBox')
+
+    // 准备一个文档碎片
+    var frag = document.createDocumentFragment()
+    // 遍历数组，根据数组成员创建li标签，并添加到ul里
+    dataList.forEach(function (item) {
+      // 创建li，并添加到ul中
+      var li = document.createElement('li')
+      console.log(item.name)
+      li.innerHTML = item.name
+      // 给每个li添加id属性
+      li.dataset.id = item.id
+      frag.appendChild(li)
+    })
+    nav.appendChild(frag)
+    // 插入页面后，给每个li绑定鼠标移入事件
+    var lis = nav.querySelectorAll('li')
+    lis.forEach(function (item) {
+      item.onmouseover = function () {
+        var id = this.dataset.id - 0
+        // 数组常用方法find
+        var secondList = dataList.find(function (item) {
+          return item.id === id
+        }).list
+        // 拼接字符串来渲染页面
+        var str = ''
+        secondList.forEach(function (item) {
+          str += `
+            <li>
+              <img src="" alt="图片">
+              <p>${item.list_name}</p>
+              <p>￥${item.list_price.toFixed(2)}</p>
+            </li>
+          `
+        })
+        // 倒入到ol里面
+        goodsBox.innerHTML = str
+      }
+    })
+    console.log(nav, goodsBox)
+    console.log(dataList)
+  </script>
+</body>
+
+</html>

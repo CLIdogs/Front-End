@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>js提供的定时器方法</title>
+</head>
+
+<body>
+  <button id="closebtn">关闭定时器</button>
+  <!-- 背景知识了解：
+    js执行是单线程的（浏览器才能开线程），只有同步代码进制，只是通过队列结构来模拟单线程异步。
+      同步：
+        按代码顺序执行，从上到下
+      异步：
+        不会立即执行，浏览器检测到异步代码则放入队列，所有同步代码执行完，再执行异步代码
+   -->
+
+  <!-- 设置 定时器的两个异步方法：
+    两个方法的返回值都表示定时器的序数（Number型），返回值常用来关闭定时器
+      setTimeout(func, time)  延时定时器，time毫秒时执行func函数
+      setInterval(func, time) 间隔定时器，每隔固定时间time毫秒执行一次函数func（浏览器关闭才会停止执行，且浏览器1秒最多捕获60次）  
+   -->
+
+  <!-- 关闭 定时器的两个异步方法：
+    clearTimeout(定时器序数)    两个方法都可以关闭上述的两种定时器（不分种类关闭）
+    clearInterval(定时器序数)
+   -->
+  <script>
+    var timer1 = setTimeout(function () { console.log('setTimeout()') }, 0);
+    console.log(timer1);    // 同步代码先执行
+    var timer2 = setInterval(function () { console.log("setInterval()") }, 1000)
+    console.log(timer2);
+
+    // 小案例：结合按钮关闭定时器
+    closebtn.onclick = function () {
+      clearTimeout(timer2)
+      clearInterval(timer1)
+    }
+  </script>
+
+
+</body>
+
+</html>

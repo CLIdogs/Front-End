@@ -1,0 +1,94 @@
+/* CSS样式的初始化：
+      每个网页首先都要进行CSS样式初始化 
+      目的： 
+          兼容不同的浏览器（不同浏览器中某些标签的默认值有差异）
+          
+      对字体的说明：
+        中文名称的字体应该用相应的Unicode编码替代（否则乱码）
+          黑体      \9ED1\4F53
+          宋体      \5B8B\4F53
+          微软雅黑  \5FAE\8F6F\96C5\9ED1
+ */
+
+/* 以下以 京东网页的初始化CSS文件 为例 */
+
+
+/* 所有标签内外边距清零 */
+* {
+  padding   : 0;
+  margin    : 0;
+  /* 采用CSS3新增的盒子模型 */
+  box-sizing: border-box;
+}
+
+/* 所有斜体文字不倾斜 */
+em,
+i {
+  font-style: normal;
+}
+
+/* 取消li的项目符号 */
+li {
+  list-style: none;
+}
+
+/* 兼容低版本浏览器：链接a内嵌img会有border，图片显示默认base-line对齐（底侧有空隙） */
+img {
+  border        : 0;
+  vertical-align: middle;
+}
+
+/* 按钮的鼠标样式 */
+button {
+  cursor: pointer;
+}
+
+/* a链接会有默认下划线、字体颜色 */
+a {
+  color          : #666;
+  text-decoration: none;
+}
+
+/* a的伪类 */
+a:hover {
+  color: #c81623;
+}
+
+/* 按钮、输入框的字体 */
+button,
+input {
+  font-family: Microsoft YaHei, Heiti SC, tahoma, arial, Hiragino Sans GB, "\5B8B\4F53", sans-serif;
+  /* 去除灰色边框 */
+  border     : 0;
+  /* 去除选择后的蓝色边框 */
+  outline    : none;
+}
+
+/* body区域的设置 */
+body {
+  /* CSS3：扛锯齿，文字放大后仍清晰 */
+  -webkit-font-smoothing: antialiaed;
+  background-color      : #fff;
+  font                  : 12px/1.5, Microsoft YaHei, Heiti SC, tahoma, arial, Hiragino Sans GB, "\5B8B\4F53", sans-serif;
+  color                 : #666;
+}
+
+/* 自定义的类样式 */
+.hide,
+.none {
+  display: none;
+}
+
+/* 清除浮动 */
+.clearfix:after {
+  visibility: hidden;
+  clear     : both;
+  display   : block;
+  content   : "";
+  height    : 0;
+}
+
+/* 兼容低版本的清除浮动 */
+.clearfix {
+  *zoom: 1;
+}

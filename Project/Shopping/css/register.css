@@ -1,0 +1,170 @@
+@font-face {
+  font-family: 'icomoon';
+  src        : url('../fonts/icomoon.eot?35tjim');
+  src        : url('../fonts/icomoon.eot?35tjim#iefix') format('embedded-opentype'),
+    url('../fonts/icomoon.ttf?35tjim') format('truetype'),
+    url('../fonts/icomoon.woff?35tjim') format('woff'),
+    url('../fonts/icomoon.svg?35tjim#icomoon') format('svg');
+  font-weight : normal;
+  font-style  : normal;
+  font-display: block;
+}
+
+.w {
+  width : 1200px;
+  margin: 0 auto;
+}
+
+header {
+  height       : 84px;
+  border-bottom: 2px solid #c81523;
+}
+
+header .logo {
+  padding-top: 18px;
+}
+
+header .logo a img {
+  width : 70px;
+  height: 50px;
+}
+
+.registerarea {
+  height    : 522px;
+  border    : 1px solid #ccc;
+  margin-top: 20px;
+}
+
+.registerarea h3 {
+  height          : 42px;
+  border-bottom   : 1px solid #ccc;
+  background-color: #ececec;
+  line-height     : 42px;
+  padding         : 0 10px;
+  font-size       : 18px;
+  font-weight     : 400;
+}
+
+.registerarea .login {
+  float    : right;
+  font-size: 14px;
+}
+
+.login a {
+  color: #c81523;
+}
+
+.reg_form {
+  width              : 500px;
+  /* background-color: pink; */
+  margin             : 50px auto 0;
+  font-size          : 14px;
+}
+
+.reg_form ul li {
+  margin-bottom: 20px;
+}
+
+.reg_form ul li label {
+  display   : inline-block;
+  width     : 88px;
+  text-align: right;
+}
+
+.reg_form ul li .inp {
+  width : 200px;
+  height: 30px;
+  border: 1px solid #ccc;
+
+}
+
+.error,
+.success {
+  font-size   : 12px;
+  padding-left: 20px;
+}
+
+.error {
+  color: #c81523;
+}
+
+.success {
+  color: green;
+}
+
+.error::before {
+  content    : '\E9E5';
+  font-family: 'icomoon';
+}
+
+.success::before {
+  font-family: 'icomoon';
+  content    : '\E9DF';
+}
+
+.safe {
+  padding-left: 120px;
+  color       : #ccc;
+  font-size   : 12px;
+}
+
+.safe em {
+  padding         : 0 12px;
+  background-color: pink;
+  margin          : 0 1px;
+  color           : #fff;
+}
+
+.safe em:nth-child(1) {
+  background-color: #de1111;
+}
+
+.safe em:nth-child(2) {
+  background-color: #40b83f;
+}
+
+.safe em:nth-child(3) {
+  background-color: #f79100;
+}
+
+.agree {
+  padding-left: 90px;
+  font-size   : 12px;
+}
+
+.agree input {
+  vertical-align: middle;
+}
+
+.agree a {
+  color: #1ba1e6;
+}
+
+.btn {
+  width           : 200px;
+  height          : 34px;
+  background-color: #c81523;
+  margin          : 30px 0 0 70px;
+  font-size       : 14px;
+  color           : #fff;
+}
+
+/* 版权模块 */
+.mod_copyright {
+  text-align : center;
+  padding-top: 20px;
+  font-size  : 12px;
+
+}
+
+.links {
+  margin-bottom: 15px;
+}
+
+.links a {
+  margin: 0 3px;
+}
+
+.copyright {
+  line-height: 20px;
+}

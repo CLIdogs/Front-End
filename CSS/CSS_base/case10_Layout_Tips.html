@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>几个页面布局的技巧</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+
+    .box1 {
+      background-color: pink;
+      /* 清除子盒子浮动对父盒子的影响 */
+      overflow: hidden;
+    }
+
+    .box1>li {
+      float: left;
+      list-style: none;
+      width: 150px;
+      height: 150px;
+      background-color: #ccc;
+      border: 1px solid blue;
+      /* 1.1，设置负的margin值，来重合边框 */
+      margin: -1px;
+    }
+
+    .box1>li:hover {
+      /* 1.2，设置相对定位来提高层级（保留原位置） */
+      position: relative;
+      /* 通过z-index设置层级（定位元素专有属性） */
+      z-index: 1;
+      border: 1px solid red;
+    }
+
+    /* 2，利用浮动元素不会压住文字的特性实现文字环绕 */
+    .box2 {
+      position: relative;
+      width: 305px;
+      height: 65px;
+      background-color: transparent;
+      margin: 30px auto;
+    }
+
+    .box2>.pic {
+      float: left;
+      width: 100px;
+      height: 65px;
+      background-color: skyblue;
+      margin-right: 5px;
+    }
+
+    .box2>.pic>img {
+      width: 100px;
+      height: 65px;
+    }
+
+    .box2>.mask {
+      position: absolute;
+      display: none;
+      width: 100px;
+      height: 65px;
+      background-color: rgba(0, 0, 0, .4);
+    }
+
+    /* 特别注意：.mask默认不显示（不占位置），则:hover不生效
+          所以应该给其他盒子加:hover来实现
+     */
+    .box2:hover .mask {
+      display: block;
+    }
+
+    .box3 {
+      text-align: center;
+    }
+
+    .box3>a {
+      display: inline-block;
+      height: 20px;
+      width: 20px;
+      background-color: #f7f7f7;
+      border: 2px solid pink;
+      border-radius: 50%;
+      color: #333;
+      text-decoration: none;
+      text-align: center;
+      line-height: 20px;
+    }
+
+    .box3:hover {
+      cursor: default;
+    }
+
+    .box3>a:hover {
+      border: 2px solid transparent;
+      background-color: pink;
+      cursor: default;
+    }
+
+    .box4 {
+      width: 200px;
+      height: 300px;
+      background-color: #fff;
+      margin: 20px auto;
+      padding: 10px;
+      border: 1px solid #333;
+    }
+
+    .box4>img {
+      width: 200px;
+      height: 230px;
+      background-color: pink;
+    }
+
+    .box4>p {
+      width: 180px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      margin: 10px auto 5px;
+      font-size: 14px;
+    }
+
+    .price {
+      width: 175px;
+      height: 24px;
+      line-height: 24px;
+      border: 2px solid red;
+      margin: 0 auto;
+      color: #fff;
+      font-weight: 700;
+    }
+
+    .now_price {
+      float: left;
+      position: relative;
+      float: left;
+      width: 90px;
+      height: 100%;
+
+      background-color: red;
+      text-align: center;
+      cursor: pointer;
+
+    }
+
+    .side {
+      position: absolute;
+      width: 0;
+      height: 0;
+      /* border-top: 0px solid pink;
+      border-right: 0px solid pink;
+      border-bottom: 100px solid pink;
+      border-left: 50px solid transparent; */
+      /* 合并写法 */
+      border-color: transparent transparent white transparent;
+      border-style: solid;
+      border-width: 0 0 24px 10px;
+      top: 0;
+      right: 0;
+    }
+
+    .old_price {
+      color: #ccc;
+      font-weight: 400;
+      font-size: 12px;
+      text-decoration: line-through;
+      cursor: not-allowed;
+    }
+  </style>
+</head>
+<!-- 
+  1，margin负值的运用
+  2，文字环绕浮动元素的运用
+  3，行内块的巧妙运用
+  4，CSS三角强化
+-->
+
+<body>
+  <ul class="box1">
+    <li>浮</li>
+    <li>动</li>
+    <li>元</li>
+    <li>素</li>
+    清除浮动
+  </ul>
+
+  <div class="box2">
+    <div class="pic">
+      <img src="./images/1.jpg" alt="">
+    </div>
+    <div class="mask"></div>
+    【集锦】热身赛-巴西0-1秘鲁 内马尔替补两人血染赛场
+  </div>
+
+  <div class="box3">
+    <!-- 利用行内块元素（转换）之间默认会存在间隙，而不需要手动添加margin来设置间隙 -->
+    <a href="#">&lt;</a>
+    <a href="#">1</a>
+    <a href="#">2</a>
+    <a href="#">3</a>
+    <a href="#">4</a>
+    <a href="#">5</a>
+    <a href="#">6</a>
+    <a href="#">7</a>
+    <a href="#">8</a>
+    <a href="#">&gt;</a>
+  </div>
+
+
+  <div class="box4">
+    <img src="./images/1.jpg" alt="商品图片">
+
+    <p>【促销】2021最后清仓大甩卖</p>
+
+    <div class="price">
+      <span class="now_price">
+        $1650.00
+        <i class="side"></i>
+      </span>
+      <span class="old_price">￥3000.00</span>
+    </div>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOM方式获取浏览器尺寸</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+    body {
+      width: 2000px;
+      height: 2000px;
+    }
+  </style>
+</head>
+<!--
+    BOM方式（包含滚动条尺寸）:
+      window.innerWidth
+      window.innerHeight
+    DOM方式（不包含）:
+      document.documentElement.clientWidth
+      document.documentElement.clientHeight
+
+
+-->
+<body>
+  <script>
+    console.log('BOM:', window.innerWidth, window.innerHeight)
+    console.log('DOM:', document.documentElement.clientWidth, document.documentElement.clientHeight)
+  </script>
+</body>
+
+</html>

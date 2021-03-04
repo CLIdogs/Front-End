@@ -1,0 +1,78 @@
+
+HTML5的新特性
+  新增语义化标签
+  新增表单元素的值
+  新增表单元素的属性
+
+特别注意：
+  H5的新特性都存在兼容性问题，IE9以上才支持
+
+  语义标签：
+    <header>    头部
+    <nav>       导航
+    <article>   内容
+    <section>   区域
+    <aside>     侧边栏
+    <footer>    尾部
+
+    注意：IE9中必须设置 display: block才有效
+
+  音视频标签：
+    使浏览器不需使用flash或其他插件实现音视频功能
+    Chrome浏览器禁用了自动播放音视频功能
+
+      <audio>   支持三种音频格式（推荐MP3格式）：MP3 Wav Ogg
+        书写方式：
+          <audio src="银屏文件地址"> </audio>
+           或
+          <audio>
+            <source src="音频文件地址" type="格式类型">
+          </audio>
+
+        常用属性：
+          autoplay      自动播放
+          controls      播放控件
+          loop          循环播放
+          src           音频url
+        
+        不同浏览器对不同音频格式的支持程度：
+            Browser      MP4       WebM      Ogg
+              IE           Y         -         -
+              Chrome       Y         Y         Y
+              Firefox      Y         Y         Y
+              Safari       Y         Y         -
+              Opera        Y         Y         Y
+
+
+      <video>   支持三种视频格式（推荐MP4格式）：MP4 WebM Ogg
+        书写方式：
+          <video src="视频文件地址" controls="controls"> </video>
+
+        常用属性：
+          autoplay        自动播放           autoplay
+          muted           静音播放           controls
+          loop            循环播放           loop
+          controls        播放控件           controls
+          width           播放器宽度         像素值
+          height          播放器高度         像素值
+          src             视频文件地址        url
+          preload         是否预加载          预加载auto、不预加载none
+          poster          加载等待的画面图片   Imgurl
+
+        不同浏览器对不同视频格式的支持程度：
+            Browser      MP4       WebM      Ogg      description
+              IE           Y         -         -
+              Chrome       Y         Y         Y
+              Firefox      Y         Y         Y       Win从21，Linnux从30版本，开始支持MP4格式
+              Safari       Y         -         -
+              Opera        Y         Y         Y       25版本开始支持MP4
+  
+  新增表单元素的属性/值：
+      required        必填
+      placeholder     提示文本
+      autofocus       自动聚焦
+      autocomplete    输入提示
+      multiple        多文件上传
+
+      type新增值：
+        email url date time month number tel search color

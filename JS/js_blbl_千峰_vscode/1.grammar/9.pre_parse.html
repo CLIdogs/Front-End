@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>预解析</title>
+</head>
+
+<body>
+    <!-- 预解析 
+        所有代码执行前进行预解析，将变量和函数的声明提前了。
+        预解析只做两件事：
+            var定义的变量的声明位置为在所有代码前
+            声明式函数在所有代码前声明，并赋值为一个函数变量fn：function fn() {}
+            赋值式函数按var定义处理，通知浏览器有这个函数变量，var fn = function() {}
+        
+            注意：
+                变量名和函数名重名时，以函数名为准
+                不论if语句是否成立，其中的变量均会预解析
+                return后的变量不执行但仍会预解析
+
+        全局变量和私有变量的预解析：
+            全局预解析：
+                只解析全局变量，页面打开时就完成了
+            私有变量的预解析：
+                函数执行时才进行预解析
+
+    -->
+    <script>
+        // 案例
+        fn()
+        var fn = 100
+        fn()
+        function fn() {
+            console.log("fn函数")
+        }
+        fn()
+
+        /*分析：
+            第一次调用：fn变量保存了函数地址，正常执行该函数
+            第二次调用：因为已经重新对fn进行了赋值，所以fn不再执行该函数，所以提示错误信息：fn不是一个函数，此时程序中断
+            第三次调用：因为程序中断，后续代码不会再执行
+         */
+
+    </script>
+</body>
+
+</html>

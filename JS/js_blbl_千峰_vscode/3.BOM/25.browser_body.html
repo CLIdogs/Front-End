@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>有关浏览器的主体区域的操作</title>
+</head>
+
+<body>
+  <!-- 浏览器的主体区域（窗体）：
+    下面显示网页内容的区域（不含浏览器上边的 标签栏、地址栏、导航栏、书签栏）
+
+    提示：
+      浏览器中滚动条也算主体区域的一部分（MAC的Safari浏览器不同，滚动时滚动条才出现，且是叠加在上面的，不再尺寸）
+    
+    BOM 窗体宽高属性(包含滚动条尺寸)：
+      window.innerWidth
+      window.innerHeight
+      提示：DOM方式获取窗体大小则不包含滚动条尺寸
+    
+    BOM 弹出层：
+      注意：
+        弹出窗口会中断程序执行，对弹出窗口操作完成才会继续执行（JS是单线程的）
+        一般不会使用弹出层（体验不好），而是自己创建（显示隐藏的div）
+
+      1，alert('警告信息')
+        警告框，只有一个确定按钮
+        返回undefined
+
+      2，confirm('提示信息')
+        确定框，有确定取消按钮
+        返回布尔型，确定为true，取消为false
+
+      3，prompt('提示信息')
+        输入框，有一个input输入框，确定取消按钮
+        确定则返回输入内容，取消则返回null
+
+   -->
+  <script>
+    // 浏览器窗体宽高
+    console.log(innerWidth, innerHeight)
+
+    // BOM 弹出层
+    var a = alert('alert警告信息');
+    var c = confirm('confirm提示信息');
+    var p = prompt('prompt提示信息');
+    console.log(a, c, p);
+
+  </script>
+</body>
+
+</html>

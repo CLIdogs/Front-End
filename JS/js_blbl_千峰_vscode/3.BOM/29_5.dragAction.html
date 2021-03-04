@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>拖拽事件</title>
+  <style>
+    div {
+      width: 200px;
+      height: 200px;
+      background-color: #ccc;
+    }
+
+    p {
+      width: 200px;
+      height: 200px;
+      background-color: pink;
+    }
+  </style>
+</head>
+<!--  拖拽事件：
+  需要两个元素才能完成拖拽事件：拖拽元素、目标元素
+  
+  拖拽元素：
+    dragstart       拖拽开始(鼠标按下即触发)，绑定给拖拽元素的
+    drag            拖拽移动中，绑定给拖拽元素
+    dragend         拖拽结束（鼠标抬起即触发），绑定给拖拽元素
+  目标元素：
+    dragenter       拖拽时光标进入目标元素时触发，绑定给目标元素
+    dragleave       光标离开目标元素时触发，绑定给目标元素
+    dragover        拖拽元素在目标元素中移动，绑定给目标元素
+    drop            拖拽元素在目标元素中松开，绑定该目标元素，必须要走dragover事件里面阻止默认行为
+
+  注意：给元素加一个 draggable 属性表示是否可拖拽（一般不可拖拽，img元素天生可拖拽）
+-->
+
+<body>
+  <div draggable="true">拖拽元素</div>
+  <p>目标元素</p>
+
+  <script>
+    var div = document.querySelector('div')
+    var p = document.querySelector('p')
+
+    div.ondragstart = function() {
+      console.log('拖拽开始')
+    }
+    // div.ondrag = function () {
+    //   console.log('拖拽中...')
+    // }
+    div.ondragend = function () {
+      console.log('拖拽结束')
+    }
+    p.ondragenter = function() {
+      console.log('进入目标元素')
+    }
+    p.ondragleave = function (){
+      console.log('离开目标元素')
+    }
+    p.ondragover = function(e) {
+      e.preventDefault()    // 阻止默认行为，drop事件才会触发
+      console.log('在目标元素中移动')
+    }
+    p.ondrop = function() {
+      console.log('目标元素中松开')
+    }
+  </script>
+</body>
+
+</html>

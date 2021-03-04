@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>背景专题</title>
+  <style>
+    div {
+      width: 100px;
+      height: 100px;
+      /* 背景颜色，默认transparent透明 */
+      background-color: pink;
+      /* 背景颜色透明度
+      background: rgba(0, 0, 0, 0.3);
+       */
+      margin: 10px auto;
+    }
+    div.box {
+      width: 200px;
+      height: 200px;
+      /* 背景图片 */
+      background-image: url(./images/1.jpg);
+      /* 背景平铺：可设置不平铺、x y方向平铺等，默认round方式平铺 */
+      background-repeat: no-repeat;
+      /* 背景位置：值为方位或xy坐标 */
+      background-position: center top;
+      /* 省略第二个参数，则第二参数默认居中
+      background-position: right
+       */
+      /* xy坐标表示，同理省略第二参数则y方向居中：
+      background-position: 20px 50px
+       */
+
+      /* 背景固定：是否随页面滚动，默认为scroll */
+      background-attachment: fixed;
+
+
+      /* 背景的复合写法，推荐顺序：颜色 图片地址 平铺 固定 图片位置
+      background: black url(../images/1.jpg) no-repeat fixed center top
+       */
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+    <div></div>
+    <div class="box"></div>
+  </main>
+</body>
+
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>浏览器事件</title>
+</head>
+<!-- 浏览器事件：
+      window.onload       页面加载完毕
+      window.onscroll     页面滚动
+      window.onresize     窗体尺寸改变
+      window.onoffline    网络断开
+      window.ononline     网络恢复
+      window.onhashchange 页面哈希值改变
+      ...
+-->
+<body>
+  <script>
+    window.onoffline = function () {
+      console.log('网络断开了')
+    }
+    window.ononline = function() {
+      console.log('网络恢复了')
+    }
+    window.onhashchange = function() {
+      console.log('页面哈希值改变了')
+    }
+  </script>
+</body>
+</html>

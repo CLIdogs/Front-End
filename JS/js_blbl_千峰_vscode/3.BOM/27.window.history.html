@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>历史记录：window对象成员 —— history对象</title>
+</head>
+<body>
+  <!-- history对象用于操作历史记录：
+        属性：
+          history.length
+          history.scrollRestoration
+          history.state
+
+        方法：
+          history.back()  回退到上一条历史记录，相当于 <-
+          history.forward() 前进到下一条历史记录，相当于 ->
+          history.go(num)   num为整数，表示回退或前进num个历史记录，=0表示刷新，>1表示前进，<0表示后退
+  -->
+  <script>
+    console.log(window.history)
+  </script>
+</body>
+
+</html>

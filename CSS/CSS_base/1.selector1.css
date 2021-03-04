@@ -1,0 +1,36 @@
+/* 基本选择器：
+
+    权重问题：
+      继承 通配       0000
+      标签            0001
+      类 伪类         0010
+      id             0100
+      行内            1000
+      !important     无穷大
+ */
+
+
+/* 通配符选择器 */
+* {
+  padding: 0;
+  margin: 0;
+}
+
+/* 标签选择器 */
+div {
+  width: 100px;
+  height: 100px;
+  background-color: #ccc;
+  margin: 5px auto;
+}
+
+/* 类选择器 */
+.box {
+  font-size: larger;
+}
+
+/* id选择器 */
+#nav {
+  font-style: italic;
+}
+

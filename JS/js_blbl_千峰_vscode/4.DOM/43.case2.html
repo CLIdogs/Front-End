@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>分页渲染案例</title>
+  <!-- 利用自己封装的随机数函数 -->
+  <script src="../2.basic_methods_cases/22.utils.js"></script>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+
+    ul>
+    li {
+      list-style: none;
+    }
+
+    .pagination {
+      width: 600px;
+      height: 80px;
+      border: 2px solid pink;
+      margin: 30px auto;
+    }
+
+    .pagination>span,
+    .pagination li {
+      float: left;
+      line-height: 80px;
+      padding: 0 5px;
+      cursor: pointer;
+    }
+
+    .pagination {
+      padding-left: 200px;
+    }
+
+    .pagination .active
+    {
+      color: red;
+    }
+
+    table {
+      width: 800px;
+      margin: 0 auto;
+      text-align: center;
+      border: 1px solid #333;
+    }
+
+    table>tbody>tr:nth-child(odd) {
+      background-color: pink;
+    }
+
+    table>tbody>tr:nth-child(even) {
+      background-color: orange;
+    }
+
+    table>tbody>tr:hover {
+      background-color: #ccc;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="pagination">
+    <span class="first">首页</span>
+    <span class="prev">上页</span>
+    <ul class="pageList"></ul>
+    <span class="next">下页</span>
+    <span class="last">尾页</span>
+  </div>
+
+  <table cellspacing="0">
+    <thead>
+      <tr>
+        <th>序号</th>
+        <th>姓名</th>
+        <th>性别</th>
+        <th>年龄</th>
+        <th>班级</th>
+        <th>操作</th>
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+
+
+  <script>
+    /* 渲染分页：
+    分析：
+        准备数据
+        一页显示记录数量
+        计算总页数
+        根据计算得到的页数来渲染ul下的li
+        先拿第一页来渲染表格
+        点击切换按钮时，切换到对应页数的记录显示
+    */
+   // 获取元素
+    var pagination = document.querySelector('.pagination')
+    var pageList = document.querySelector('.pageList')
+    var prevBtn = document.querySelector('.prev')
+    var nextBtn = document.querySelector('.next')
+    var firstBtn = document.querySelector('.first')
+    var lastBtn = document.querySelector('.last')
+    var tbody = document.querySelector('tbody')
+    // 准备数据（循环创建）
+    var userList = []
+    var str1 = '赵钱孙李周吴郑王'
+    var str2 = '一二三四五六七八九十'
+    var str3 = '男女'
+    for (var i = 0; i < 123; i++) {
+      userList.push({
+        id: i + 1,
+        username: str1[rangeRandom(0, 7)] + str2[rangeRandom(0, 9)],
+        gender: str3[rangeRandom(0, 1)],
+        age: rangeRandom(18, 22),
+        class: rangeRandom(2000, 2003)
+      })
+    }
+    console.log(userList)
+    // 渲染分页按钮
+    // 计算总页数
+    var totalPage = Math.ceil(userList.length / 11)
+    // 选择创建节点（还需要绑定事件）：实际上，拼接字符串、创建节点两种方式都可以实现插入节点到页面上
+    // 准备一个文档碎片
+    var frag = document.createDocumentFragment()
+    // 循环
+    for (var i = 1; i <= totalPage; i++) {
+      // 创建li标签
+      var li = document.createElement('li')
+      li.innerHTML = i
+      li.dataset.page = i
+      // 第一页默认显示
+      if (i === 1) {
+        li.className = 'active'
+      }
+      // 给li添加点击事件
+      li.onclick = function () {
+        var page = this.dataset.page - 0
+        currentPage = page
+        bindHtml()
+      }
+      // 把li放入文档碎片
+      frag.appendChild(li)
+    }
+    // 循环结束，把li添加到ul中
+    pageList.appendChild(frag)
+
+    
+
+    // 渲染第一页表格数据，从userList中拿出第一页的数据（slice）
+    var currentPage = 1   //当前页
+    // 得到指定页数的数据，并渲染页面
+    function bindHtml(){
+      var n = currentPage
+      var bindList = userList.slice((n-1)*11,n*11)
+      // 渲染页面：
+      var str = ''
+      bindList.forEach(function(item,index) {
+        str += `
+        <tr>
+          <td>${index+1}</td>
+          <td>${item.username}</td>
+          <td>${item.gender}</td>
+          <td>${item.age}</td>
+          <td>${item.class}</td>
+          <td>
+            <button>编辑</button>
+            <button>删除</button>
+          </td>
+        </tr>
+        `
+      })
+      tbody.innerHTML = str
+      changeActive()
+    }
+    bindHtml()
+
+    // 重新绑定类名active
+    function changeActive() {
+      for(var i = 0; i < pageList.children.length; i++) {
+        pageList.children[i].className = ''
+      }
+      pageList.children[currentPage - 1].className = 'active'
+
+      if(currentPage === 1) {
+        firstBtn.classList.add('active')
+        lastBtn.classList.remove('active')
+      }
+      else if(currentPage === totalPage) {
+        firstBtn.classList.remove('active')
+        lastBtn.classList.add('active')
+      }
+      else {
+        firstBtn.classList.remove('active')
+        lastBtn.classList.remove('active')
+      }
+    }
+    
+    // 绑定事件
+    
+    prevBtn.onclick = function() {
+      if(currentPage === 1) {
+        return
+      }
+      currentPage--
+      bindHtml()
+    }
+    nextBtn.onclick = function() {
+      if(currentPage === totalPage) {
+        return
+      }
+      currentPage++
+      bindHtml()
+    }
+    firstBtn.onclick = function() {
+      currentPage = 1
+      bindHtml()
+      lastBtn.classList.remove('active')
+    }
+    lastBtn.onclick = function() {
+      currentPage = totalPage
+      bindHtml()
+      firstBtn.classList.remove('active')
+    }
+    
+
+    // 防止选中
+    pagination.onselectstart = function(e) {
+      e.preventDefault()
+    }
+
+  </script>
+</body>
+
+</html>

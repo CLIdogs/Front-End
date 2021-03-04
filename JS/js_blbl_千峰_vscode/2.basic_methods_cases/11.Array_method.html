@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>操作数组Array的常用方法</title>
+</head>
+
+<!-- 常用方法总结：
+        基本：
+            push() pop() unshift() shift()
+        ES3.0标准新增（IE 6 7 8都可用）：
+            reverse() sort() splice() join() slice() concat()
+        ES5.0标准新增（IE 6 7 8不好使）：
+            indexof() lastIndexOf() forEach() map() fliter() every() some()
+        ES6,2015新增（IE 10以上）：
+            fill() copyWithin() includes() flat() flatMap() find() findIndex()
+  -->
+
+<body>
+
+  <!-- Array数组的常用方法：
+            增：
+                数组名.push(参数表)     依次在末尾追加，返回length
+                数组名.unshift(参数表)  在最前面添加，返回length
+
+            删：
+                数组名.pop()           删除最后一个元素，返回被删除的元素
+                数组名.shift()         删除第一个元素，返回被删除的元素
+
+            查：
+                数组名.find(function(item, index, arr) {逻辑代码})  根据条件，返回数组中满足条件的第一个数据
+                数组名.findIndex(function(item) {逻辑代码}) 返回第一个满足条件的数据的索引
+
+
+            reverse 反转：
+                数组名.reverse()       反转数组，返回结果数组
+
+            sort 排序：
+                数组名.sort()          按ASCAII排序，返回结果数组，可以设置升序或降序
+
+            splice 截取、替换：
+                数组名.splice(start, offsets)        返回被截取的子数组，offsets不写则表示直到末尾
+                数组名.splice(start, offsets, data1,...)    插入data到指定的索引范围，返回被替换的子数组
+
+            concat 拼接：
+                数组名.concat(数组, 数据)   不改变原数组（新开辟空间进行拼接），数组或数据都依次追加数组末尾，返回新开辟的数组
+
+            join 连接：
+                数组名.join('连接符号')     用连接符号连接数组的所有元素(默认逗号连接)，返回该string
+
+            slice 子数组：
+                数组名.slice(start, end)          不改变原数组，获取数组的部分数据（左闭右开），返回由这些数据组成的新数组,start省略则表示从头开始，end省略则表示直到最后
+
+            indexOf 获取索引：
+                数组名.indexOf(数据)        正向查找，返回查找数据的第一个索引，不存在则返回-1
+                数组名.indexOf(数据, start) 从start索引开始查找
+                数组名.lastIndexOf(数据)    反向查找
+                数组名.lastIndexOf(数据, start) 从start索引开始往前查找
+
+            includes 判断数组中是否存在某数据
+                数组名.includes(data)   返回布尔型：存在则返回true，否则返回false
+
+            forEach 遍历数组:
+                数组名.forEach(function(item, index, arr) {逻辑代码})   forEach函数没有返回值，item元素，index索引，arr数组
+
+            map 映射：
+                数组名.map(function(item, index, arr) {逻辑代码})   不改变原数组arr，对每个原数组元素（遍历）进行相同操作（逻辑代码决定）而形成新数组，并返回，参数意义同上
+
+            filter 过滤数组数据：
+                数组名.filter(function(item, index, arr) {逻辑代码})    不改变原数组arr，遍历数组符合条件的元素加入到新数组中，结果组成的新数组返回
+
+            every 判断数组每个元素是否满足条件:
+                数组名.every(function(item, index, arr) {逻辑代码})     不改变原数组arr，返回布尔型：true(每个元素都满足) 或 false
+
+            some 判断数组中是否有某个元素满足条件：
+                数组名.some(function(item, index, arr) {逻辑代码})      不改变原数组，返回布尔型：true（存在满足条件的函数）或 false
+
+            copyWithin 使用部分数组元素替换数组中其他元素
+                数组名.copyWithin(des_position, start, end)     从des_position索引位置元素开始依次替换为当前数组中 [start,end) 的元素，返回新数组，start默认0，end默认末尾位置
+            
+            fill 填充数组
+                数组名.fill(des_data, start, end)   前提数组长度不能为0，start默认0，end默认末尾位置
+
+            flat() 扁平化(数组降维) —— 2018新增
+                数组名.flat(维数)      多维数组降维，即每个元素降指定维数,再返回新数组，不改变原数组，默认拆一层，也可以使用预定义号的Infinity（无限）代替数值
+            
+            flatMap() 降维的同时映射，只能对二维数组操作
+                数组名.flatMap(function(item, index, arr) {逻辑代码})       返回降维后的新数组，原数组不变
+            
+    -->
+
+  <script>
+    
+    var arr1 = [123, 'hello', '你好']
+    function fn1() { console.log("fn1函数") }
+
+    var res = arr1.push('世界', 456, ['二维', '数组'], fn1, { "name": "js" })  // 后增：返回数组长度，可见数组中基本和引用数据类型都能放
+    console.log(res, arr1)
+
+    res = arr1.unshift('js')    //unshift()前增
+    console.log(res, arr1)
+
+    res = arr1.pop()    //pop()后删
+    console.log(res, arr1)
+
+    res = arr1.shift()  //shift()前删
+    console.log(res, arr1)
+
+    console.log(arr1.reverse()) // reverse() 反转数组
+
+    console.log(arr1.sort())    // 按ASCAII排列
+    var arr2 = [2, 4, 1, 5, 9]
+    res = arr2.sort(function (a, b) { return a - b }) // 升序
+    console.log(res)
+    res = arr2.sort(function (a, b) { return b - a }) // 降序
+    console.log(res)
+
+    res = arr2.splice(1, 2)  // 分割数组，索引1开始，共2个元素
+    console.log(res, arr2)
+    res = arr2.splice(1, 1, 'data1', 'data2', '...')
+    console.log(res, arr2)
+
+    res = arr2.concat(['a1', 'a2'], 0)
+    console.log(res, arr2)  // 原数组不变
+
+    res = arr2.slice(1, -2)   // 获取子数组（1 <= 索引 < length-2），原数组不变，可见负数表示从后开始数。
+    console.log(res, arr2)
+
+    res = arr2.join('-')
+    console.log(res, arr2)
+
+    res = arr2.indexOf('...')   //同理的有：indexOf(data, start) lastIndexOf(data) lastIndexOf(data, start)
+    console.log('元素索引：', res)
+
+    arr2.forEach(function (item, index, arr2) {     // 遍历数组
+      console.log(item, '---', index)
+    })
+
+    var m = arr2.map(function (item, index, arr2) {  // 映射，对每个数组元素进行相同操作得到的结果组成新的数组返回
+      return item + 'map'
+    })
+    console.log(m, arr2)
+
+    var f = arr2.filter(function (item, index, arr2) {   // 过滤数组元素：function返回true则把当前元素加入到新数组，function返回false则不加入
+      return item > 1     // 函数需要返回 false 或 true
+    })
+    console.log(f, arr2)
+
+    var e = arr2.every(function (item, index, arr2) {    // 判断是否所有数组元素都符合条件
+      return item > 1
+    })
+    console.log('every()',e, arr2)
+
+    var s = arr2.some(function (item, index, arr2) {     // 判断数组中是否存在某个符合条件的元素
+      return item > 8
+    })
+    console.log(s, arr2)
+
+    var c = arr2.copyWithin(0, 3, 5) // copyWithin()，用当前数组中的元素替换数组元素，在原数组上操作，[3,5)元素依次从0开始替换[0,2)
+    console.log(c, arr2)
+
+    var i = arr2.includes('...')
+    console.log(i)
+
+    var arr3 = [
+      10,
+      20,
+      [30, 40],
+      [50, [60, 70]],
+      [70, [80, [90, 100]]]
+    ]
+    res = arr3.flat()           // 拆多维数组一层
+    console.log('flat(1):', res, arr3)
+    res = arr3.flat(2)          // 拆两层:[10,20,30,40,50,60,70,70,80,[90,100]]
+    console.log('flat(2):', res, arr3)
+    console.log('flat(Infinity):', arr3.flat(Infinity))
+
+    // 2018前的版本，如何拆分为一维？
+    res = arr3.toString().split(',')
+    console.log("2018前的版本实现", res.map(function (item, index, res) {
+      return item - '0'
+    }))
+
+    var arr4 = [
+      ['a'],
+      ['b', 'c'],
+      [2, 5, 8]
+    ]
+    res = arr4.flatMap(function (item) {    // 降维的同时进行映射新数组
+      return item.filter(function (value) {
+        return value % 2 == 0
+      })
+    })
+    console.log("flatMap():", res, arr4)
+
+    res = arr3.find(function (item) {        // find方法，返回数据
+      return item > 10
+    })
+    console.log("find():", res, arr3)
+
+    res = arr3.findIndex(function (item) {   // findIndex()方法，返回第一个满足条件的元素的索引
+      return item == 20
+    })
+    console.log("findIndex():", res, arr3)
+
+
+
+  </script>
+</body>
+
+</html>

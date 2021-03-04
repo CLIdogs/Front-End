@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>全选功能实现</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+    .box {
+      width: 200px;
+      height: 100px;
+      border: 2px solid red;
+      padding: 10px;
+      margin: auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <div class="all">
+      <input type="checkbox">全选
+    </div>
+    <hr>
+    <div class="items">
+      <input type="checkbox">选项1<br>
+      <input type="checkbox">选项2<br>
+      <input type="checkbox">选项3<br>
+    </div>
+  </div>
+
+  <script>
+    var allbtn = document.querySelector('.all>input')
+    var itemsbtn = document.querySelectorAll('.items>input')
+
+    // 全选到选项的映射
+    allbtn.onclick = function() {
+      var state = allbtn.checked;
+      itemsbtn.forEach(function(item) {
+        item.checked = state;
+      })
+    }
+
+    // 选项到全选的映射
+    itemsbtn.forEach(function(item) {
+      item.onclick = function() {
+        var flag = true;
+        for(var i = 0; i < itemsbtn.length; i++) {
+          if(itemsbtn[i].checked == false) {
+            flag = false;
+            break;
+          }
+        }
+        allbtn.checked = flag;
+      }
+    })
+  </script>
+</body>
+</html>

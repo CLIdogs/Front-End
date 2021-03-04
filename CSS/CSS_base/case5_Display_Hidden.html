@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>盒子的显示、隐藏案例</title>
+</head>
+<style>
+  * {
+    padding: 0;
+    margin: 0;
+  }
+
+  .box {
+    position: relative;
+    width: 444px;
+    height: 320px;
+    background-color: pink;
+    margin: 30px auto;
+  }
+
+  .mask {
+    /* 先隐藏遮罩层 */
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,.4);
+    /* 可以通过 background 属性添加表示开关的背景图片，达到暂停播放的效果 */
+  }
+
+  .box:hover .mask {
+    display: block;
+  }
+</style>
+
+<body>
+  <div class="box">
+    <div class="mask"></div>
+    <div class="switch"></div>
+  </div>
+</body>
+
+</html>

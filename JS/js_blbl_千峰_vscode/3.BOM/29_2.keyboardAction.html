@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>键盘事件</title>
+</head>
+<!-- 键盘事件：
+      keydown     按键按下
+      keyup       按键抬起
+      keypress    键盘按下(当即在文本框中输入内容才有效)
+      注意：
+        不是所有元素都能触发，可识别键盘上的所有按键；
+        中文输入法也可触发
+        能触发的有：
+          表单元素（有选中效果）
+          document
+          window
+-->
+<body>
+  <input type="text">
+  <script>
+    var inp = document.querySelector('input')
+    inp.onkeydown = function () {
+      console.log('按键按下')
+    }
+    inp.onkeyup = function () {
+      console.log('按键抬起')
+    }
+    inp.onkeypress = function() {
+      console.log('按键按下——嵌入内容')
+    }
+    inp.onkey
+  </script>
+</body>
+
+</html>

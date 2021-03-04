@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>模拟回到顶部</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      height: 3000px;
+    }
+
+    .topBar {
+      width: 100%;
+      height: 50px;
+      line-height: 50px;
+      text-align: center;
+      color: #fff;
+      background-color: skyblue;
+      position: fixed;
+      font-size: 30px;
+      left: 0;
+      top: 0;
+      display: none;
+    }
+
+    .goTop {
+      width: 50px;
+      height: 50px;
+      line-height: 25px;
+      font-size: 20px;
+      color: #fff;
+      background-color: pink;
+      position: fixed;
+      bottom: 50px;
+      right: 50px;
+      text-align: center;
+      display: none;
+    }
+
+    .topBar.active {
+      display: block;
+    }
+
+    .goTop.active {
+      display: block;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="topBar">顶部通栏</div>
+  <div class="goTop">回到顶部</div>
+  <script>
+    var topBar = document.querySelector('.topBar')
+    var goTop = document.querySelector('.goTop')
+    // 操作两个盒子显示和隐藏
+    window.onscroll = function () {
+      var scrollTop = document.documentElement.scrollTop || window.document.body.scrollTop;
+      if (scrollTop >= 300) {
+        topBar.classList.add('active')
+        goTop.classList.add('active')
+      } else {
+        topBar.classList.remove('active')
+        goTop.classList.remove('active')
+      }
+    }
+
+    goTop.onclick = function () {
+      window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: 'smooth'
+      })
+    }
+
+    // 回到顶部
+
+  </script>
+</body>
+
+</html>

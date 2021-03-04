@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS3新增的伪元素选择器</title>
+  <style>
+    div {
+      width: 200px;
+      height: 200px;
+      background-color: #ccc;
+      margin: 30px auto;
+    }
+
+    /* 创建的是行内元素，宽高设置无效 */
+    .box1::before {
+      content: '伪元素';
+      width: 100px;
+      height: 100px;
+      background-color: pink;
+    }
+    
+    .box1::after {
+      content: '行内元素';
+      width: 100px;
+      height: 100px;
+      background-color: skyblue;
+    }
+
+    .box2::before {
+      content: 'display';
+      display: inline-block;
+      width: 70px;
+      height: 100px;
+      background-color: pink;
+    }
+
+    .box2::after {
+      content: 'inline-block';
+      display: inline-block;
+      width: 120px;
+      height: 100px;
+      background-color: skyblue;
+    }
+
+  </style>
+</head>
+<!-- 作用
+        通过CSS创建【行内】元素插入到页面中（文档树中找不到），从而简化HTML代码
+
+      伪元素选择器：
+        E::before      插入到元素内部的前面
+        E::after       插入到元素内部的最后
+        注意：
+          1，创建的盒子默认行内元素，不可直接设置宽高
+          2，content属性必写，即使没有内容也不可省略，content: '';
+          3，兼容问题：低版本中为单冒号（高版本中单冒号也能解析双冒号）
+-->
+
+<body>
+  <div class="box1">默认创建</div>
+  <div class="box2">:</div>
+</body>
+
+</html>
